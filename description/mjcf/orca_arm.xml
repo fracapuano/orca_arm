@@ -1,0 +1,240 @@
+<mujoco model="orca_arm">
+  <compiler meshdir="../meshes" balanceinertia="true" angle="radian"/>
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0.1 0.1 0.1"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <global azimuth="120" elevation="-20"/>
+  </visual>
+
+  <statistic center="0 0 0.4" extent="1.2"/>
+
+  <asset>
+    <mesh name="openarm_body_link0_symp" content_type="model/stl" file="openarm/body/v10/collision/body_link0_symp.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="openarm_link0_symp" content_type="model/stl" file="openarm/arm/v10/collision/link0_symp.stl" scale="0.001 -0.001 0.001"/>
+    <mesh name="openarm_link1_symp" content_type="model/stl" file="openarm/arm/v10/collision/link1_symp.stl" scale="0.001 -0.001 0.001"/>
+    <mesh name="openarm_link2_symp" content_type="model/stl" file="openarm/arm/v10/collision/link2_symp.stl" scale="0.001 -0.001 0.001"/>
+    <mesh name="openarm_link3_symp" content_type="model/stl" file="openarm/arm/v10/collision/link3_symp.stl" scale="0.001 -0.001 0.001"/>
+    <mesh name="openarm_link4_symp" content_type="model/stl" file="openarm/arm/v10/collision/link4_symp.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="openarm_link5_symp" content_type="model/stl" file="openarm/arm/v10/collision/link5_symp.stl" scale="0.001 -0.001 0.001"/>
+    <mesh name="openarm_link6_symp" content_type="model/stl" file="openarm/arm/v10/collision/link6_symp.stl" scale="0.001 -0.001 0.001"/>
+    <mesh name="openarm_link7_symp" content_type="model/stl" file="openarm/arm/v10/collision/link7_symp.stl" scale="0.001 -0.001 0.001"/>
+    <mesh name="openarm_link0_symp1" content_type="model/stl" file="openarm/arm/v10/collision/link0_symp.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="openarm_link1_symp1" content_type="model/stl" file="openarm/arm/v10/collision/link1_symp.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="openarm_link2_symp1" content_type="model/stl" file="openarm/arm/v10/collision/link2_symp.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="openarm_link3_symp1" content_type="model/stl" file="openarm/arm/v10/collision/link3_symp.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="openarm_hand" content_type="model/stl" file="openarm/ee/openarm_hand/collision/hand.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="openarm_finger" content_type="model/stl" file="openarm/ee/openarm_hand/collision/finger.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="openarm_finger1" content_type="model/stl" file="openarm/ee/openarm_hand/collision/finger.stl" scale="0.001 -0.001 0.001"/>
+    <mesh name="orcahand_ForeArmStructure-Model" content_type="model/stl" file="orcahand/right/ForeArmStructure-Model.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="orcahand_TopTower-Model" content_type="model/stl" file="orcahand/right/TopTower-Model.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="orcahand_R-Carpals" content_type="model/stl" file="orcahand/right/R-Carpals.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="orcahand_P-AP" content_type="model/stl" file="orcahand/right/P-AP.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="orcahand_P-PP" content_type="model/stl" file="orcahand/right/P-PP.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="orcahand_P-FingerTipAssembly" content_type="model/stl" file="orcahand/right/P-FingerTipAssembly.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="orcahand_M-AP" content_type="model/stl" file="orcahand/right/M-AP.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="orcahand_M-PP" content_type="model/stl" file="orcahand/right/M-PP.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="orcahand_M-FingerTipAssembly" content_type="model/stl" file="orcahand/right/M-FingerTipAssembly.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="orcahand_I-AP-R" content_type="model/stl" file="orcahand/right/I-AP-R.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="orcahand_I-PP" content_type="model/stl" file="orcahand/right/I-PP.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="orcahand_I-FingerTipAssembly" content_type="model/stl" file="orcahand/right/I-FingerTipAssembly.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="orcahand_T-TP-R" content_type="model/stl" file="orcahand/right/T-TP-R.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="orcahand_R-T-AP" content_type="model/stl" file="orcahand/right/R-T-AP.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="orcahand_T-PP" content_type="model/stl" file="orcahand/right/T-PP.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="orcahand_T-DP" content_type="model/stl" file="orcahand/right/T-DP.stl" scale="0.001 0.001 0.001"/>
+  </asset>
+
+  <worldbody>
+
+    <light pos="0 0 2.5" dir="0 0 -1" diffuse="0.8 0.8 0.8" specular="0.3 0.3 0.3" castshadow="true"/>
+    <light pos="1 1 2" dir="-0.5 -0.5 -1" diffuse="0.4 0.4 0.4"/>
+    <geom name="floor" type="plane" size="2 2 0.1" rgba="0.8 0.8 0.8 1" pos="0 0 0"/>
+    <geom name="openarm_body_link0_collision" type="mesh" mesh="openarm_body_link0_symp"/>
+    <geom name="openarm_left_link0_collision" pos="0 0.031 0.698" quat="0.707105 -0.707108 0 0" type="mesh" mesh="openarm_link0_symp"/>
+    <geom name="openarm_right_link0_collision" pos="0 -0.031 0.698" quat="0.707105 0.707108 0 0" type="mesh" mesh="openarm_link0_symp1"/>
+    <body name="openarm_left_link1" pos="0 0.0935 0.698" quat="0.707105 -0.707108 0 0">
+      <inertial pos="0.00114677 -3.31999e-05 0.0539528" quat="0.999653 0.00178277 0.0262159 -0.0018256" mass="1.14167" diaginertia="0.00156853 0.001273 0.00101447"/>
+      <joint name="openarm_left_joint1" pos="0 0 0" axis="0 0 1" range="-3.49066 1.39626" actuatorfrcrange="-40 40"/>
+      <geom name="openarm_left_link1_collision" pos="0 0 -0.0625" type="mesh" mesh="openarm_link1_symp"/>
+      <body name="openarm_left_link2" pos="-0.0301 0 0.06" quat="0.707107 -0.707107 0 0">
+        <inertial pos="0.00839629 2.01451e-08 0.0325665" quat="0.966167 0.00423301 0.257864 0.00305037" mass="0.277509" diaginertia="0.000421651 0.000376006 0.000169343"/>
+        <joint name="openarm_left_joint2" pos="0 0 0" axis="-1 0 0" range="-3.31613 0.174533" actuatorfrcrange="-40 40"/>
+        <geom name="openarm_left_link2_collision" pos="0.0301 0 -0.1225" type="mesh" mesh="openarm_link2_symp"/>
+        <body name="openarm_left_link3" pos="0.0301 0 0.06625">
+          <inertial pos="-0.00210475 -0.000554909 0.0904747" quat="0.999951 -0.00493243 -0.00144148 0.00846755" mass="1.07386" diaginertia="0.00437205 0.00431934 0.000660613"/>
+          <joint name="openarm_left_joint3" pos="0 0 0" axis="0 0 1" range="-1.5708 1.5708" actuatorfrcrange="-27 27"/>
+          <geom name="openarm_left_link3_collision" pos="0 0 -0.18875" quat="1 0 0 0" type="mesh" mesh="openarm_link3_symp"/>
+          <body name="openarm_left_link4" pos="0 0.0315 0.15375">
+            <inertial pos="-0.00290068 -0.0303058 0.0633964" quat="0.994282 0.0996876 0.0329726 -0.0194356" mass="0.634853" diaginertia="0.000624355 0.000518596 0.000325049"/>
+            <joint name="openarm_left_joint4" pos="0 0 0" axis="0 1 0" range="0 2.44346" actuatorfrcrange="-27 27"/>
+            <geom name="openarm_left_link4_collision" pos="0 -0.0315 -0.3425" type="mesh" mesh="openarm_link4_symp"/>
+            <body name="openarm_left_link5" pos="0 -0.0315 0.0955">
+              <inertial pos="-0.00304967 -0.00088669 0.0430798" quat="0.583368 -0.0362076 0.0020034 0.811398" mass="0.615659" diaginertia="0.000448064 0.000420549 0.000323387"/>
+              <joint name="openarm_left_joint5" pos="0 0 0" axis="0 0 1" range="-1.5708 1.5708" actuatorfrcrange="-7 7"/>
+              <geom name="openarm_left_link5_collision" pos="0 0 -0.438" quat="1 0 0 0" type="mesh" mesh="openarm_link5_symp"/>
+              <body name="openarm_left_link6" pos="0.0375 0 0.1205">
+                <inertial pos="-0.0371366 -0.000332305 -9.49837e-05" quat="0.162305 0.716462 0.124543 0.666955" mass="0.475203" diaginertia="0.000159518 0.000156606 0.000142875"/>
+                <joint name="openarm_left_joint6" pos="0 0 0" axis="1 0 0" range="-0.785398 0.785398" actuatorfrcrange="-7 7"/>
+                <geom name="openarm_left_link6_collision" pos="-0.0375 0 -0.5585" quat="1 0 0 0" type="mesh" mesh="openarm_link6_symp"/>
+                <body name="openarm_left_link7" pos="-0.0375 0 0">
+                  <inertial pos="0.000225407 -0.0493083 0.0527505" quat="0.562309 0.826922 -0.00037379 0.00302762" mass="0.815977" diaginertia="0.00265078 0.00228138 0.000591786"/>
+                  <joint name="openarm_left_joint7" pos="0 0 0" axis="0 -1 0" range="-1.5708 1.5708" actuatorfrcrange="-7 7"/>
+                  <geom name="openarm_left_link7_collision" pos="0 0 -0.5585" type="mesh" mesh="openarm_link7_symp"/>
+                  <geom name="openarm_left_hand_collision" pos="0 0 -0.5584" quat="1 0 0 0" type="mesh" mesh="openarm_hand"/>
+                  <body name="openarm_left_right_finger" pos="0 -0.006 0.1151">
+                    <inertial pos="0.0064528 -0.01702 0.0219685" quat="0.904408 0.0781531 -0.188678 0.374618" mass="0.0360255" diaginertia="1.83333e-06 1.83333e-06 1.83333e-06"/>
+                    <joint name="openarm_left_finger_joint1" pos="0 0 0" axis="0 -1 0" type="slide" range="0 0.044" actuatorfrcrange="-333 333"/>
+                    <geom name="openarm_left_right_finger_collision" pos="0 0.05 -0.673001" quat="1 0 0 0" type="mesh" mesh="openarm_finger1"/>
+                  </body>
+                  <body name="openarm_left_left_finger" pos="0 0.006 0.1151">
+                    <inertial pos="0.0064528 0.01702 0.0219685" quat="0.904408 0.0781531 -0.188678 0.374618" mass="0.0360255" diaginertia="1.83333e-06 1.83333e-06 1.83333e-06"/>
+                    <joint name="openarm_left_finger_joint2" pos="0 0 0" axis="0 1 0" type="slide" range="0 0.044" actuatorfrcrange="-333 333"/>
+                    <geom name="openarm_left_left_finger_collision" pos="0 -0.05 -0.673001" quat="1 0 0 0" type="mesh" mesh="openarm_finger"/>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="openarm_right_link1" pos="0 -0.0935 0.698" quat="0.707105 0.707108 0 0">
+      <inertial pos="0.00114677 3.31999e-05 0.0539528" quat="0.999653 0.00178277 0.0262159 -0.0018256" mass="1.14167" diaginertia="0.00156853 0.001273 0.00101447"/>
+      <joint name="openarm_right_joint1" pos="0 0 0" axis="0 0 1" range="-1.39626 3.49066" actuatorfrcrange="-40 40"/>
+      <geom name="openarm_right_link1_collision" pos="0 0 -0.0625" type="mesh" mesh="openarm_link1_symp1"/>
+      <body name="openarm_right_link2" pos="-0.0301 0 0.06" quat="0.707107 0.707107 0 0">
+        <inertial pos="0.00839629 -2.01451e-08 0.0325665" quat="0.966167 0.00423301 0.257864 0.00305037" mass="0.277509" diaginertia="0.000421651 0.000376006 0.000169343"/>
+        <joint name="openarm_right_joint2" pos="0 0 0" axis="-1 0 0" range="-0.174533 3.31613" actuatorfrcrange="-40 40"/>
+        <geom name="openarm_right_link2_collision" pos="0.0301 0 -0.1225" type="mesh" mesh="openarm_link2_symp1"/>
+        <body name="openarm_right_link3" pos="0.0301 0 0.06625">
+          <inertial pos="-0.00210475 0.000554909 0.0904747" quat="0.999951 -0.00493243 -0.00144148 0.00846755" mass="1.07386" diaginertia="0.00437205 0.00431934 0.000660613"/>
+          <joint name="openarm_right_joint3" pos="0 0 0" axis="0 0 1" range="-1.5708 1.5708" actuatorfrcrange="-27 27"/>
+          <geom name="openarm_right_link3_collision" pos="0 0 -0.18875" quat="1 0 0 0" type="mesh" mesh="openarm_link3_symp1"/>
+          <body name="openarm_right_link4" pos="0 0.0315 0.15375">
+            <inertial pos="0.0135667 -0.147008 -0.00416577" quat="0.039609 0.705959 -0.0406657 0.705974" mass="8.24304" diaginertia="134.557 130.17 111.639"/>
+            <joint name="openarm_right_joint4" pos="0 0 0" axis="0 1 0" range="0 2.44346" actuatorfrcrange="-27 27"/>
+            <geom name="openarm_right_link4_collision" pos="0 -0.0315 -0.3425" type="mesh" mesh="openarm_link4_symp"/>
+            <geom pos="-0.01 -0.0315 0.153" quat="0 0 0.707107 0.707107" type="mesh" rgba="1 1 1 1" mesh="orcahand_ForeArmStructure-Model"/>
+            <geom pos="0 -0.0315 0.2053" quat="-0.707107 0 0 0.707107" type="mesh" rgba="1 1 1 1" mesh="orcahand_TopTower-Model"/>
+            <body name="orcahand_right_R-Carpals_8d1f1041" pos="0 -0.0315 0.2453" quat="0 0 -0.300706 0.953717">
+              <inertial pos="-0.005 -0.00187708 0.0495" quat="0.676949 -0.122061 -0.169645 0.705734" mass="0.135388" diaginertia="1.71432 1.29706 0.574665"/>
+              <joint name="orcahand_right_R-Carpals_8d1f1041_to_TopTower-Model_4a80d30e" pos="0 0 0" axis="-1 0 0" range="-1.13446 0.610865" actuatorfrcrange="-100 100"/>
+              <geom pos="-0.005 -0.00187708 0.0495" quat="1 0 0 0" type="mesh" rgba="1 1 1 1" mesh="orcahand_R-Carpals"/>
+              <body name="orcahand_right_P-AP_f5e42b61" pos="0.0356417 0.000689159 0.0620542" quat="0.457318 0.340199 0.613869 -0.546159">
+                <inertial pos="-0.01775 0 -0.001" quat="-5.37235e-05 0.678784 -8.25306e-07 0.734338" mass="0.00413586" diaginertia="0.00778563 0.00739789 0.00187075"/>
+                <joint name="orcahand_right_P-AP_f5e42b61_to_R-Carpals_8d1f1041" pos="0 0 0" axis="0 0 1" range="-0.523599 0.523599" actuatorfrcrange="-100 100"/>
+                <geom pos="-0.01775 0 -0.001" quat="1 0 0 0" type="mesh" rgba="1 1 1 1" mesh="orcahand_P-AP"/>
+                <body name="orcahand_right_P-PP_1d411b9b" pos="-0.01775 0 -0.001" quat="0.707107 0 -0.707107 0">
+                  <inertial pos="0 0 0" quat="0.757715 0.025739 0.0312903 0.651326" mass="0.00811738" diaginertia="0.0257942 0.0257696 0.00337209"/>
+                  <joint name="orcahand_right_P-PP_1d411b9b_to_P-AP_f5e42b61" pos="0 0 0" axis="0 -1 0" range="-0.436332 1.74533" actuatorfrcrange="-100 100"/>
+                  <geom type="mesh" rgba="1 1 1 1" mesh="orcahand_P-PP"/>
+                  <body name="orcahand_right_P-FingerTipAssembly_cd219176" pos="0.001 0 0.031" quat="1 0 0 0">
+                    <inertial pos="0 0 0" quat="0.707239 -0.0192054 -0.0194271 0.706447" mass="0.0331906" diaginertia="0.121123 0.118798 0.00742277"/>
+                    <joint name="orcahand_right_P-FingerTipAssembly_cd219176_to_P-PP_1d411b9b" pos="0 0 0" axis="0 -1 0" range="-0.261799 1.8675" actuatorfrcrange="-100 100"/>
+                    <geom type="mesh" rgba="1 1 1 1" mesh="orcahand_P-FingerTipAssembly"/>
+                  </body>
+                </body>
+              </body>
+              <body name="orcahand_right_M-AP_6ec59111" pos="0.0153077 -0.00321836 0.0713048" quat="0.485171 0.438492 0.554729 -0.514401">
+                <inertial pos="-0.01925 0 -0.001" quat="-3.5747e-05 0.679132 -5.84224e-06 0.734016" mass="0.00492357" diaginertia="0.00995035 0.00946071 0.00266989"/>
+                <joint name="orcahand_right_M-AP_6ec59111_to_R-Carpals_8d1f1041" pos="0 0 0" axis="0 0 1" range="-0.471239 0.471239" actuatorfrcrange="-100 100"/>
+                <geom pos="-0.01925 0 -0.001" quat="1 0 0 0" type="mesh" rgba="1 1 1 1" mesh="orcahand_M-AP"/>
+                <body name="orcahand_right_M-PP_8660a1eb" pos="-0.019867 0 -0.001" quat="0.707107 0 -0.707107 0">
+                  <inertial pos="0 0 0" quat="0.710924 0.0299631 0.0309106 0.70195" mass="0.0127336" diaginertia="0.065043 0.0644515 0.00647709"/>
+                  <joint name="orcahand_right_M-PP_8660a1eb_to_M-AP_6ec59111" pos="0 0 0" axis="0 -1 0" range="-0.436332 1.74533" actuatorfrcrange="-100 100"/>
+                  <geom type="mesh" rgba="1 1 1 1" mesh="orcahand_M-PP"/>
+                  <body name="orcahand_right_M-FingerTipAssembly_424a8e75" pos="0.002 0 0.04" quat="1 0 0 0">
+                    <inertial pos="0 0 0" quat="0.708168 -0.0031601 -0.0032434 0.706029" mass="0.046737" diaginertia="0.240043 0.236778 0.0120566"/>
+                    <joint name="orcahand_right_M-FingerTipAssembly_424a8e75_to_M-PP_8660a1eb" pos="0 0 0" axis="0 -1 0" range="-0.261799 1.8675" actuatorfrcrange="-100 100"/>
+                    <geom type="mesh" rgba="1 1 1 1" mesh="orcahand_M-FingerTipAssembly"/>
+                  </body>
+                </body>
+              </body>
+              <body name="orcahand_right_M-AP_e04a96f2" pos="-0.00570633 -0.0040234 0.0785019" quat="0.500654 0.500654 0.499345 -0.499345">
+                <inertial pos="-0.01925 0 -0.001" quat="-3.5747e-05 0.679132 -5.84224e-06 0.734016" mass="0.00492357" diaginertia="0.00995035 0.00946071 0.00266989"/>
+                <joint name="orcahand_right_M-AP_e04a96f2_to_R-Carpals_8d1f1041" pos="0 0 0" axis="0 0 1" range="-0.471239 0.471239" actuatorfrcrange="-100 100"/>
+                <geom pos="-0.01925 0 -0.001" quat="1 0 0 0" type="mesh" rgba="1 1 1 1" mesh="orcahand_M-AP"/>
+                <body name="orcahand_right_M-PP_08efa608" pos="-0.019867 0 -0.001" quat="0.707107 0 -0.707107 0">
+                  <inertial pos="0 0 0" quat="0.710924 0.0299631 0.0309106 0.70195" mass="0.0127336" diaginertia="0.065043 0.0644515 0.00647709"/>
+                  <joint name="orcahand_right_M-PP_08efa608_to_M-AP_e04a96f2" pos="0 0 0" axis="0 -1 0" range="-0.436332 1.74533" actuatorfrcrange="-100 100"/>
+                  <geom type="mesh" rgba="1 1 1 1" mesh="orcahand_M-PP"/>
+                  <body name="orcahand_right_M-FingerTipAssembly_34afb748" pos="0.002 0 0.04" quat="1 0 0 0">
+                    <inertial pos="0 0 0" quat="0.708168 -0.0031601 -0.0032434 0.706029" mass="0.046737" diaginertia="0.240043 0.236778 0.0120566"/>
+                    <joint name="orcahand_right_M-FingerTipAssembly_34afb748_to_M-PP_08efa608" pos="0 0 0" axis="0 -1 0" range="-0.261799 1.8675" actuatorfrcrange="-100 100"/>
+                    <geom type="mesh" rgba="1 1 1 1" mesh="orcahand_M-FingerTipAssembly"/>
+                  </body>
+                </body>
+              </body>
+              <body name="orcahand_right_I-AP-R_d95d02d1" pos="-0.027241 -0.00220697 0.0694068" quat="0.519647 0.566724 0.43173 -0.471593">
+                <inertial pos="-0.01875 0 -0.001" quat="-0.00068369 0.679605 0.00174529 0.733576" mass="0.00459029" diaginertia="0.00916177 0.00867545 0.00235798"/>
+                <joint name="orcahand_right_I-AP-R_d95d02d1_to_R-Carpals_8d1f1041" pos="0 0 0" axis="0 0 1" range="-0.436332 0.523599" actuatorfrcrange="-100 100"/>
+                <geom pos="-0.01875 0 -0.001" quat="1 0 0 0" type="mesh" rgba="1 1 1 1" mesh="orcahand_I-AP-R"/>
+                <body name="orcahand_right_I-PP_bacbd481" pos="-0.019151 0 -0.001" quat="0.707107 0 -0.707107 0">
+                  <inertial pos="0 0 0" quat="0.71414 0.0281053 0.0294667 0.698817" mass="0.0113732" diaginertia="0.050424 0.0501383 0.00557676"/>
+                  <joint name="orcahand_right_I-PP_bacbd481_to_I-AP-R_d95d02d1" pos="0 0 0" axis="0 -1 0" range="-0.436332 1.74533" actuatorfrcrange="-100 100"/>
+                  <geom type="mesh" rgba="1 1 1 1" mesh="orcahand_I-PP"/>
+                  <body name="orcahand_right_I-FingerTipAssembly_ec49c16c" pos="0.0015 0 0.037" quat="1 0 0 0">
+                    <inertial pos="0 0 0" quat="0.708119 -0.00312739 -0.00320556 0.706079" mass="0.0467518" diaginertia="0.240127 0.236855 0.0120639"/>
+                    <joint name="orcahand_right_I-FingerTipAssembly_ec49c16c_to_I-PP_bacbd481" pos="0 0 0" axis="0 -1 0" range="-0.261799 1.8675" actuatorfrcrange="-100 100"/>
+                    <geom type="mesh" rgba="1 1 1 1" mesh="orcahand_I-FingerTipAssembly"/>
+                  </body>
+                </body>
+              </body>
+              <body name="orcahand_right_T-TP-R_1c2b802d" pos="-0.0283987 0.0109972 0.0305895" quat="0.659119 0.359511 -0.0724731 -0.656553">
+                <inertial pos="0 0 -0.00385" quat="0.98859 0.0305699 0.00467681 -0.147425" mass="0.00797873" diaginertia="0.0142608 0.011799 0.00673214"/>
+                <joint name="orcahand_right_T-TP-R_1c2b802d_to_R-Carpals_8d1f1041" pos="0 0 0" axis="0 0 -1" range="-0.785398 0.575959" actuatorfrcrange="-100 100"/>
+                <geom pos="0 0 -0.00385" type="mesh" rgba="1 1 1 1" mesh="orcahand_T-TP-R"/>
+                <body name="orcahand_right_R-T-AP_a9723101" pos="-0.008 0 -0.00385" quat="0.819152 -0.573576 0 0">
+                  <inertial pos="-0.028 0 0" quat="0.00297698 0.708595 0.00227712 0.705606" mass="0.00700414" diaginertia="0.0263154 0.0256004 0.00373501"/>
+                  <joint name="orcahand_right_R-T-AP_a9723101_to_T-TP-R_1c2b802d" pos="0 0 0" axis="0 0.34202 0.939693" range="-0.314159 0.959931" actuatorfrcrange="-100 100"/>
+                  <geom pos="-0.028 0 0" quat="1 0 0 0" type="mesh" rgba="1 1 1 1" mesh="orcahand_R-T-AP"/>
+                  <body name="orcahand_right_T-PP_68395e98" pos="-0.028 0 0" quat="0 -0.707107 0 0.707107">
+                    <inertial pos="0 0 0" quat="0.999128 -0.000624401 0.0411148 0.00722351" mass="0.0104908" diaginertia="0.0343537 0.0339831 0.00539594"/>
+                    <joint name="orcahand_right_T-PP_68395e98_to_R-T-AP_a9723101" pos="0 0 0" axis="0 -1 0" range="-0.436332 1.74533" actuatorfrcrange="-100 100"/>
+                    <geom type="mesh" rgba="1 1 1 1" mesh="orcahand_T-PP"/>
+                    <body name="orcahand_right_T-DP_b7429e50" pos="0.001 0 0.032" quat="1 0 0 0">
+                      <inertial pos="0 0 0" quat="0.999812 0.00067269 0.0184706 0.00594227" mass="0.00815769" diaginertia="0.0215832 0.0210638 0.00324334"/>
+                      <joint name="orcahand_right_T-DP_b7429e50_to_T-PP_68395e98" pos="0 0 0" axis="0 -1 0" range="-0.261799 1.8675" actuatorfrcrange="-100 100"/>
+                      <geom pos="0 0 0" type="mesh" rgba="1 1 1 1" mesh="orcahand_T-DP"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <actuator>
+    <position name="act_openarm_left_joint1" joint="openarm_left_joint1" kp="100" ctrlrange="-3.49066 1.39626"/>
+    <position name="act_openarm_left_joint2" joint="openarm_left_joint2" kp="100" ctrlrange="-3.31613 0.174533"/>
+    <position name="act_openarm_left_joint3" joint="openarm_left_joint3" kp="100" ctrlrange="-1.5708 1.5708"/>
+    <position name="act_openarm_left_joint4" joint="openarm_left_joint4" kp="100" ctrlrange="0 2.44346"/>
+    <position name="act_openarm_left_joint5" joint="openarm_left_joint5" kp="50" ctrlrange="-1.5708 1.5708"/>
+    <position name="act_openarm_left_joint6" joint="openarm_left_joint6" kp="50" ctrlrange="-0.785398 0.785398"/>
+    <position name="act_openarm_left_joint7" joint="openarm_left_joint7" kp="50" ctrlrange="-1.5708 1.5708"/>
+    <position name="act_openarm_left_finger_joint1" joint="openarm_left_finger_joint1" kp="100" ctrlrange="0 0.044"/>
+    <position name="act_openarm_left_finger_joint2" joint="openarm_left_finger_joint2" kp="100" ctrlrange="0 0.044"/>
+    <position name="act_openarm_right_joint1" joint="openarm_right_joint1" kp="100" ctrlrange="-1.39626 3.49066"/>
+    <position name="act_openarm_right_joint2" joint="openarm_right_joint2" kp="100" ctrlrange="-0.174533 3.31613"/>
+    <position name="act_openarm_right_joint3" joint="openarm_right_joint3" kp="100" ctrlrange="-1.5708 1.5708"/>
+    <position name="act_openarm_right_joint4" joint="openarm_right_joint4" kp="100" ctrlrange="0 2.44346"/>
+    <position name="act_orcahand_right_R-Carpals_8d1f1041_to_TopTower-Model_4a80d30e" joint="orcahand_right_R-Carpals_8d1f1041_to_TopTower-Model_4a80d30e" kp="5" ctrlrange="-1.13446 0.610865"/>
+    <position name="act_orcahand_right_P-AP_f5e42b61_to_R-Carpals_8d1f1041" joint="orcahand_right_P-AP_f5e42b61_to_R-Carpals_8d1f1041" kp="5" ctrlrange="-0.523599 0.523599"/>
+    <position name="act_orcahand_right_P-PP_1d411b9b_to_P-AP_f5e42b61" joint="orcahand_right_P-PP_1d411b9b_to_P-AP_f5e42b61" kp="5" ctrlrange="-0.436332 1.74533"/>
+    <position name="act_orcahand_right_P-FingerTipAssembly_cd219176_to_P-PP_1d411b9b" joint="orcahand_right_P-FingerTipAssembly_cd219176_to_P-PP_1d411b9b" kp="5" ctrlrange="-0.261799 1.8675"/>
+    <position name="act_orcahand_right_M-AP_6ec59111_to_R-Carpals_8d1f1041" joint="orcahand_right_M-AP_6ec59111_to_R-Carpals_8d1f1041" kp="5" ctrlrange="-0.471239 0.471239"/>
+    <position name="act_orcahand_right_M-PP_8660a1eb_to_M-AP_6ec59111" joint="orcahand_right_M-PP_8660a1eb_to_M-AP_6ec59111" kp="5" ctrlrange="-0.436332 1.74533"/>
+    <position name="act_orcahand_right_M-FingerTipAssembly_424a8e75_to_M-PP_8660a1eb" joint="orcahand_right_M-FingerTipAssembly_424a8e75_to_M-PP_8660a1eb" kp="5" ctrlrange="-0.261799 1.8675"/>
+    <position name="act_orcahand_right_M-AP_e04a96f2_to_R-Carpals_8d1f1041" joint="orcahand_right_M-AP_e04a96f2_to_R-Carpals_8d1f1041" kp="5" ctrlrange="-0.471239 0.471239"/>
+    <position name="act_orcahand_right_M-PP_08efa608_to_M-AP_e04a96f2" joint="orcahand_right_M-PP_08efa608_to_M-AP_e04a96f2" kp="5" ctrlrange="-0.436332 1.74533"/>
+    <position name="act_orcahand_right_M-FingerTipAssembly_34afb748_to_M-PP_08efa608" joint="orcahand_right_M-FingerTipAssembly_34afb748_to_M-PP_08efa608" kp="5" ctrlrange="-0.261799 1.8675"/>
+    <position name="act_orcahand_right_I-AP-R_d95d02d1_to_R-Carpals_8d1f1041" joint="orcahand_right_I-AP-R_d95d02d1_to_R-Carpals_8d1f1041" kp="5" ctrlrange="-0.436332 0.523599"/>
+    <position name="act_orcahand_right_I-PP_bacbd481_to_I-AP-R_d95d02d1" joint="orcahand_right_I-PP_bacbd481_to_I-AP-R_d95d02d1" kp="5" ctrlrange="-0.436332 1.74533"/>
+    <position name="act_orcahand_right_I-FingerTipAssembly_ec49c16c_to_I-PP_bacbd481" joint="orcahand_right_I-FingerTipAssembly_ec49c16c_to_I-PP_bacbd481" kp="5" ctrlrange="-0.261799 1.8675"/>
+    <position name="act_orcahand_right_T-TP-R_1c2b802d_to_R-Carpals_8d1f1041" joint="orcahand_right_T-TP-R_1c2b802d_to_R-Carpals_8d1f1041" kp="5" ctrlrange="-0.785398 0.575959"/>
+    <position name="act_orcahand_right_R-T-AP_a9723101_to_T-TP-R_1c2b802d" joint="orcahand_right_R-T-AP_a9723101_to_T-TP-R_1c2b802d" kp="5" ctrlrange="-0.314159 0.959931"/>
+    <position name="act_orcahand_right_T-PP_68395e98_to_R-T-AP_a9723101" joint="orcahand_right_T-PP_68395e98_to_R-T-AP_a9723101" kp="5" ctrlrange="-0.436332 1.74533"/>
+    <position name="act_orcahand_right_T-DP_b7429e50_to_T-PP_68395e98" joint="orcahand_right_T-DP_b7429e50_to_T-PP_68395e98" kp="5" ctrlrange="-0.261799 1.8675"/>
+  </actuator>
+</mujoco>
