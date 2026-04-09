@@ -63,6 +63,84 @@ print(f"[1/2] Compiling {URDF_TMP} with MuJoCo...")
 model = mujoco.MjModel.from_xml_path(URDF_TMP)
 print(f"  nq={model.nq} nv={model.nv} nbody={model.nbody} njnt={model.njnt}")
 
-print(f"[2/2] Saving MJCF to {MJCF_OUT}...")
+print(f"[2/3] Saving MJCF to {MJCF_OUT}...")
 mujoco.mj_saveLastXML(MJCF_OUT, model)
+
+# ── Step 3: Post-process to add damping + position actuators ──────────────
+# The URDF compiler emits no <default>, no <actuator>, and no joint damping,
+# so the bare MJCF behaves like a free-falling pendulum chain. Inject:
+#  - a <default> with two classes (arm_joint, hand_joint) carrying damping
+#  - a <position> actuator per hinge joint, classed by name
+# Tag each hinge joint with the appropriate class so the defaults take effect.
+print(f"[3/3] Injecting damping + position actuators...")
+
+mtree = ET.parse(MJCF_OUT)
+mroot = mtree.getroot()
+
+# Stiff enough to hold the arm against gravity at the default pose without
+# visible sag or oscillation. Damping near critical for the dominant inertia.
+ARM_KP, ARM_KV, ARM_DAMP = 2000.0, 100.0, 20.0
+HAND_KP, HAND_KV, HAND_DAMP = 20.0, 1.0, 0.5
+
+def joint_class(jname):
+    return "arm_joint" if jname.startswith("openarm_") else "hand_joint"
+
+# <default> block with two joint classes
+default = ET.Element("default")
+arm_class = ET.SubElement(default, "default")
+arm_class.set("class", "arm_joint")
+ET.SubElement(arm_class, "joint", {"damping": str(ARM_DAMP), "armature": "0.5"})
+ET.SubElement(arm_class, "position", {
+    "kp": str(ARM_KP), "kv": str(ARM_KV), "ctrlrange": "-3.14 3.14",
+    "forcerange": "-200 200",
+})
+hand_class = ET.SubElement(default, "default")
+hand_class.set("class", "hand_joint")
+ET.SubElement(hand_class, "joint", {"damping": str(HAND_DAMP), "armature": "0.001"})
+ET.SubElement(hand_class, "position", {
+    "kp": str(HAND_KP), "kv": str(HAND_KV), "ctrlrange": "-2 2",
+    "forcerange": "-5 5",
+})
+# Insert <default> right after <compiler>
+insert_at = 1
+for i, child in enumerate(mroot):
+    if child.tag == "compiler":
+        insert_at = i + 1
+        break
+mroot.insert(insert_at, default)
+
+# Tag every hinge joint in the worldbody with its class
+hinge_joint_names = []
+for joint in mroot.iter("joint"):
+    # skip joints inside <default> blocks
+    parents_in_default = False
+    # quick check: only tag joints that have a "name" attribute
+    name = joint.get("name")
+    if not name:
+        continue
+    cls = joint_class(name)
+    joint.set("class", cls)
+    hinge_joint_names.append(name)
+
+# Build <actuator> block referencing each joint
+actuator = ET.Element("actuator")
+for name in hinge_joint_names:
+    cls = joint_class(name)
+    pos = ET.SubElement(actuator, "position")
+    pos.set("class", cls)
+    pos.set("name", f"act_{name}")
+    pos.set("joint", name)
+mroot.append(actuator)
+
+ET.indent(mtree, space="  ")
+mtree.write(MJCF_OUT, xml_declaration=False, encoding="unicode")
+
+# Validate the patched MJCF reloads cleanly and stepping is stable
+m2 = mujoco.MjModel.from_xml_path(MJCF_OUT)
+d2 = mujoco.MjData(m2)
+import numpy as np
+for _ in range(500):
+    mujoco.mj_step(m2, d2)
+assert np.isfinite(d2.qpos).all(), "qpos went non-finite during step test"
+print(f"  patched MJCF: nq={m2.nq} nu={m2.nu} actuators wired, 500 steps stable.")
 print("Done.")
