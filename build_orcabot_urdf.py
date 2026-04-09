@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Build a combined URDF: OpenArm bimanual robot with OrcaHand v2 right hand
-replacing the original right gripper.
+Build a combined URDF: OpenArm bimanual robot with OrcaHand v2 left and right
+hands replacing both original grippers.
 """
 
 import os
@@ -16,7 +16,8 @@ import xml.etree.ElementTree as ET
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 OPENARM_DESC = os.path.join(BASE_DIR, "openarm_description_repo")
 ORCAHAND_DESC = os.path.join(BASE_DIR, "orcahand_repo")
-ORCAHAND_URDF = os.path.join(ORCAHAND_DESC, "v2", "models", "urdf", "orcahand_right.urdf")
+ORCAHAND_URDF_RIGHT = os.path.join(ORCAHAND_DESC, "v2", "models", "urdf", "orcahand_right.urdf")
+ORCAHAND_URDF_LEFT = os.path.join(ORCAHAND_DESC, "v2", "models", "urdf", "orcahand_left.urdf")
 OPENARM_XACRO = os.path.join(OPENARM_DESC, "urdf", "robot", "v10.urdf.xacro")
 OUTPUT_URDF = os.path.join(BASE_DIR, "orcabot.urdf")
 
@@ -92,77 +93,7 @@ except Exception as e:
 openarm_tree = ET.ElementTree(ET.fromstring(openarm_xml_str))
 openarm_root = openarm_tree.getroot()
 
-# ── Step 2: Parse OrcaHand v2 right URDF ──────────────────────────────────
-print("[2/5] Parsing OrcaHand v2 right hand URDF...")
-orca_tree = ET.parse(ORCAHAND_URDF)
-orca_root = orca_tree.getroot()
-
-# Collect all orcahand links and joints
-orca_links = orca_root.findall("link")
-orca_joints = orca_root.findall("joint")
-orca_materials = orca_root.findall("material")
-
-print(f"  Found {len(orca_links)} links, {len(orca_joints)} joints")
-
-# ── Step 3: Remove right forearm + gripper from OpenArm ────────────────────
-print("[3/5] Removing OpenArm right link5-7, joint5-7 + gripper...")
-
-# Attach the orcahand at link4 (elbow). Remove link5-7, joint5-7, and gripper.
-# The orcahand's ForeArmStructure replaces the entire forearm from the elbow down.
-right_remove_links = {
-    "openarm_right_link5",
-    "openarm_right_link6",
-    "openarm_right_link7",
-    "openarm_right_hand",
-    "openarm_right_hand_tcp",
-    "openarm_right_left_finger",
-    "openarm_right_right_finger",
-}
-
-def is_right_removable_link(link_elem):
-    return link_elem.get("name", "") in right_remove_links
-
-def is_right_removable_joint(joint_elem):
-    name = joint_elem.get("name", "")
-    # Remove joint5 (link4 -> link5), joint6, joint7
-    if name in ("openarm_right_joint5", "openarm_right_joint6", "openarm_right_joint7"):
-        return True
-    if "right_openarm_hand" in name:
-        return True
-    # Check if parent or child is a removable link
-    parent = joint_elem.find("parent")
-    child = joint_elem.find("child")
-    if parent is not None and parent.get("link", "") in right_remove_links:
-        return True
-    if child is not None and child.get("link", "") in right_remove_links:
-        return True
-    return False
-
-removed_links = []
-removed_joints = []
-
-for link in list(openarm_root.findall("link")):
-    if is_right_removable_link(link):
-        removed_links.append(link.get("name"))
-        openarm_root.remove(link)
-
-for joint in list(openarm_root.findall("joint")):
-    if is_right_removable_joint(joint):
-        removed_joints.append(joint.get("name"))
-        openarm_root.remove(joint)
-
-print(f"  Removed links: {removed_links}")
-print(f"  Removed joints: {removed_joints}")
-
-# ── Step 4: Add OrcaHand with prefix and fix mesh paths ───────────────────
-print("[4/5] Adding OrcaHand v2 right hand...")
-
-ORCA_PREFIX = "orcahand_right_"
-ORCA_MESH_BASE = os.path.join(ORCAHAND_DESC, "v2", "models", "assets", "right")
-OPENARM_MESH_BASE = OPENARM_DESC
-
-def prefix_name(name):
-    return ORCA_PREFIX + name
+import math
 
 def fix_mesh_path(mesh_elem):
     """Convert package:// URIs to absolute file:// paths for standalone use."""
@@ -176,90 +107,172 @@ def fix_mesh_path(mesh_elem):
         abs_path = os.path.join(OPENARM_DESC, rel_path)
         mesh_elem.set("filename", f"file://{abs_path}")
 
-# Add orcahand material (white) if not already present
-has_white_material = False
-for mat in openarm_root.findall("material"):
-    if mat.get("name") == "orcahand_white":
-        has_white_material = True
-        break
+# Add orcahand material (white) once
+mat_elem = ET.SubElement(openarm_root, "material")
+mat_elem.set("name", "orcahand_white")
+color_elem = ET.SubElement(mat_elem, "color")
+color_elem.set("rgba", "1 1 1 1")
 
-if not has_white_material:
-    mat_elem = ET.SubElement(openarm_root, "material")
-    mat_elem.set("name", "orcahand_white")
-    color_elem = ET.SubElement(mat_elem, "color")
-    color_elem.set("rgba", "1 1 1 1")
+SIDES = [
+    ("right", ORCAHAND_URDF_RIGHT),
+    ("left",  ORCAHAND_URDF_LEFT),
+]
 
-# Add prefixed orcahand links
-for link in orca_links:
-    new_link = copy.deepcopy(link)
-    old_name = new_link.get("name")
-    new_link.set("name", prefix_name(old_name))
+for side, orca_urdf_path in SIDES:
+    # ── Step 2: Parse OrcaHand v2 URDF ────────────────────────────────────
+    print(f"[2/5] Parsing OrcaHand v2 {side} hand URDF...")
+    orca_tree = ET.parse(orca_urdf_path)
+    orca_root = orca_tree.getroot()
 
-    # Fix mesh paths and material references
-    for mesh in new_link.iter("mesh"):
-        fix_mesh_path(mesh)
-    for mat in new_link.iter("material"):
-        if mat.get("name") == "white":
-            mat.set("name", "orcahand_white")
+    orca_links = orca_root.findall("link")
+    orca_joints = orca_root.findall("joint")
+    print(f"  Found {len(orca_links)} links, {len(orca_joints)} joints")
 
-    # The orcahand URDF only has <visual> geometry, no <collision>.
-    # MuJoCo needs collision geometry to render. Duplicate each visual
-    # as a collision element so the hand appears in MuJoCo.
-    for visual in new_link.findall("visual"):
-        collision = copy.deepcopy(visual)
-        collision.tag = "collision"
-        # Remove material from collision (not needed)
-        for mat in collision.findall("material"):
-            collision.remove(mat)
-        new_link.append(collision)
+    # ── Step 3: Remove forearm + gripper from OpenArm ─────────────────────
+    print(f"[3/5] Removing OpenArm {side} link5-7, joint5-7 + gripper...")
 
-    openarm_root.append(new_link)
+    remove_links = {
+        f"openarm_{side}_link5",
+        f"openarm_{side}_link6",
+        f"openarm_{side}_link7",
+        f"openarm_{side}_hand",
+        f"openarm_{side}_hand_tcp",
+        f"openarm_{side}_left_finger",
+        f"openarm_{side}_right_finger",
+    }
 
-# Add prefixed orcahand joints
-for joint in orca_joints:
-    new_joint = copy.deepcopy(joint)
-    old_name = new_joint.get("name")
-    new_joint.set("name", prefix_name(old_name))
+    def is_removable_link(link_elem, _rl=remove_links):
+        return link_elem.get("name", "") in _rl
 
-    # Fix parent/child link references
-    parent = new_joint.find("parent")
-    if parent is not None:
-        parent.set("link", prefix_name(parent.get("link")))
-    child = new_joint.find("child")
-    if child is not None:
-        child.set("link", prefix_name(child.get("link")))
+    def is_removable_joint(joint_elem, _side=side, _rl=remove_links):
+        name = joint_elem.get("name", "")
+        if name in (f"openarm_{_side}_joint5", f"openarm_{_side}_joint6", f"openarm_{_side}_joint7"):
+            return True
+        if f"{_side}_openarm_hand" in name:
+            return True
+        parent = joint_elem.find("parent")
+        child = joint_elem.find("child")
+        if parent is not None and parent.get("link", "") in _rl:
+            return True
+        if child is not None and child.get("link", "") in _rl:
+            return True
+        return False
 
-    openarm_root.append(new_joint)
+    removed_links = []
+    removed_joints = []
 
-# Add the connecting fixed joint from openarm_right_link4 to orcahand root.
-# The orcahand's ForeArmStructure replaces the entire forearm from the elbow.
-# Orientation: the orcahand forearm extends along its local +y axis
-# (TopTower is at y=0.052 from ForeArmStructure). The openarm extends
-# along +z. We rotate to align: rpy=(pi/2, 0, pi) maps orca +y -> arm +z.
-import math
-print("  Adding fixed joint: openarm_right_link4 -> orcahand root...")
-connect_joint = ET.SubElement(openarm_root, "joint")
-connect_joint.set("name", "openarm_right_to_orcahand_joint")
-connect_joint.set("type", "fixed")
+    for link in list(openarm_root.findall("link")):
+        if is_removable_link(link):
+            removed_links.append(link.get("name"))
+            openarm_root.remove(link)
 
-parent_elem = ET.SubElement(connect_joint, "parent")
-parent_elem.set("link", "openarm_right_link4")
+    for joint in list(openarm_root.findall("joint")):
+        if is_removable_joint(joint):
+            removed_joints.append(joint.get("name"))
+            openarm_root.remove(joint)
 
-child_elem = ET.SubElement(connect_joint, "child")
-child_elem.set("link", prefix_name("ForeArmStructure-Model_e18f2368"))
+    print(f"  Removed links: {removed_links}")
+    print(f"  Removed joints: {removed_joints}")
 
-# Place the orcahand so its base center sits at the tip of link4's arm axis.
-#
-# After rotation rpy=(pi/2,0,pi), the orca base center (local -0.01, -0.058, 0)
-# maps to (+0.01, 0, -0.058) in link4's frame relative to the connection point.
-#
-# To center the base on the arm axis (x=0, y=0) at link4's tip (z=0.095):
-#   conn_x + 0.01 = 0    =>  conn_x = -0.01
-#   conn_y + 0    = 0     =>  conn_y = 0
-#   conn_z - 0.058 = 0.095 => conn_z = 0.153
-origin_elem = ET.SubElement(connect_joint, "origin")
-origin_elem.set("xyz", "-0.01 -0.0315 0.153")
-origin_elem.set("rpy", f"{math.pi/2} 0 {math.pi}")
+    # ── Step 4: Add OrcaHand with prefix and fix mesh paths ───────────────
+    print(f"[4/5] Adding OrcaHand v2 {side} hand...")
+
+    ORCA_PREFIX = f"orcahand_{side}_"
+
+    def prefix_name(name, _p=ORCA_PREFIX):
+        return _p + name
+
+    # Copy hand meshes into a side-specific cache dir with unique basenames,
+    # so trimesh's basename-keyed mesh cache does not collapse shared names
+    # (e.g. left/ForeArmStructure-Model.stl and right/ForeArmStructure-Model.stl)
+    # into the same geometry.
+    mesh_cache_dir = os.path.join(BASE_DIR, "mesh_cache", f"orcahand_{side}")
+    os.makedirs(mesh_cache_dir, exist_ok=True)
+
+    def rebase_mesh_to_cache(mesh_elem, _side=side, _cache=mesh_cache_dir):
+        fn = mesh_elem.get("filename", "")
+        if not fn.startswith("package://orcahand_description/"):
+            return
+        rel = fn.replace("package://orcahand_description/", "")
+        src = os.path.join(ORCAHAND_DESC, rel)
+        unique_name = f"{_side}_{os.path.basename(src)}"
+        dst = os.path.join(_cache, unique_name)
+        if not os.path.exists(dst):
+            shutil.copyfile(src, dst)
+        mesh_elem.set("filename", f"file://{dst}")
+
+    # Add prefixed orcahand links
+    for link in orca_links:
+        new_link = copy.deepcopy(link)
+        old_name = new_link.get("name")
+        new_link.set("name", prefix_name(old_name))
+
+        for mesh in new_link.iter("mesh"):
+            rebase_mesh_to_cache(mesh)
+        for mat in new_link.iter("material"):
+            if mat.get("name") == "white":
+                mat.set("name", "orcahand_white")
+
+        # Duplicate visuals as collisions for MuJoCo
+        for visual in new_link.findall("visual"):
+            collision = copy.deepcopy(visual)
+            collision.tag = "collision"
+            for mat in collision.findall("material"):
+                collision.remove(mat)
+            new_link.append(collision)
+
+        openarm_root.append(new_link)
+
+    # Add prefixed orcahand joints
+    for joint in orca_joints:
+        new_joint = copy.deepcopy(joint)
+        old_name = new_joint.get("name")
+        new_joint.set("name", prefix_name(old_name))
+
+        # Unify left wrist rest pose with the right.
+        # orcahand_right.urdf has rpy="-0.6108 0 -pi/2" on Carpals_to_TopTower
+        # while orcahand_left.urdf has rpy="0 0 -pi/2", producing an asymmetric
+        # bimanual rest pose. Patch at build time so the vendored URDF stays
+        # pristine (upstream fix tracked separately).
+        if side == "left" and "Carpals" in old_name and "TopTower" in old_name:
+            o = new_joint.find("origin")
+            if o is not None:
+                o.set("rpy", f"-0.610865285723758 0.0 {-math.pi/2}")
+
+        parent = new_joint.find("parent")
+        if parent is not None:
+            parent.set("link", prefix_name(parent.get("link")))
+        child = new_joint.find("child")
+        if child is not None:
+            child.set("link", prefix_name(child.get("link")))
+
+        openarm_root.append(new_joint)
+
+    # Connecting fixed joint from openarm_{side}_link4 to orcahand root.
+    print(f"  Adding fixed joint: openarm_{side}_link4 -> orcahand {side} root...")
+    connect_joint = ET.SubElement(openarm_root, "joint")
+    connect_joint.set("name", f"openarm_{side}_to_orcahand_joint")
+    connect_joint.set("type", "fixed")
+
+    parent_elem = ET.SubElement(connect_joint, "parent")
+    parent_elem.set("link", f"openarm_{side}_link4")
+
+    child_elem = ET.SubElement(connect_joint, "child")
+    child_elem.set("link", prefix_name("ForeArmStructure-Model_e18f2368"))
+
+    # Right side: keep original mount (palm faces outward from body).
+    # Left side: rotate 180° around the forearm (local z) axis so the
+    # palm faces inward toward the robot body, mirroring the right hand.
+    # The 180° flip around z is achieved by changing yaw pi -> 0, which
+    # also negates the x component of the base-center offset derivation,
+    # so conn_x flips sign (-0.01 -> 0.01).
+    origin_elem = ET.SubElement(connect_joint, "origin")
+    if side == "right":
+        origin_elem.set("xyz", "-0.01 -0.0315 0.153")
+        origin_elem.set("rpy", f"{math.pi/2} 0 {math.pi}")
+    else:
+        origin_elem.set("xyz", "0.01 -0.0315 0.153")
+        origin_elem.set("rpy", f"{math.pi/2} 0 0")
 
 # Fix mesh paths in openarm links too (package:// -> file://)
 for mesh in openarm_root.iter("mesh"):
