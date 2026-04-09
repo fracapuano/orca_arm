@@ -1,0 +1,6 @@
+[submodule "orcahand_repo"]
+	path = orcahand_repo
+	url = https://github.com/orcahand/orcahand_description
+[submodule "openarm_description_repo"]
+	path = openarm_description_repo
+	url = https://github.com/enactic/openarm_description
