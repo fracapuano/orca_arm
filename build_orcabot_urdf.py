@@ -101,11 +101,11 @@ def fix_mesh_path(mesh_elem):
     if filename.startswith("package://orcahand_description/"):
         rel_path = filename.replace("package://orcahand_description/", "")
         abs_path = os.path.join(ORCAHAND_DESC, rel_path)
-        mesh_elem.set("filename", f"file://{abs_path}")
+        mesh_elem.set("filename", abs_path)
     elif filename.startswith("package://openarm_description/"):
         rel_path = filename.replace("package://openarm_description/", "")
         abs_path = os.path.join(OPENARM_DESC, rel_path)
-        mesh_elem.set("filename", f"file://{abs_path}")
+        mesh_elem.set("filename", abs_path)
 
 # Add orcahand material (white) once
 mat_elem = ET.SubElement(openarm_root, "material")
@@ -199,7 +199,7 @@ for side, orca_urdf_path in SIDES:
         dst = os.path.join(_cache, unique_name)
         if not os.path.exists(dst):
             shutil.copyfile(src, dst)
-        mesh_elem.set("filename", f"file://{dst}")
+        mesh_elem.set("filename", dst)
 
     # Add prefixed orcahand links
     for link in orca_links:

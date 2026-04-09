@@ -11,25 +11,25 @@
     </default>
   </default>
   <asset>
-    <mesh name="body_link0_73238742" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/mesh_cache/dae2stl/body_link0_73238742.stl" scale="0.001 0.001 0.001" />
+    <mesh name="body_link0_46747003" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/mesh_cache/dae2stl/body_link0_46747003.stl" scale="0.001 0.001 0.001" />
     <mesh name="body_link0_symp" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/body/v10/collision/body_link0_symp.stl" scale="0.001 0.001 0.001" />
-    <mesh name="link0_21940495" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/mesh_cache/dae2stl/link0_21940495.stl" scale="0.001 -0.001 0.001" />
+    <mesh name="link0_31223989" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/mesh_cache/dae2stl/link0_31223989.stl" scale="0.001 -0.001 0.001" />
     <mesh name="link0_symp" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link0_symp.stl" scale="0.001 -0.001 0.001" />
-    <mesh name="link1_21940495" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/mesh_cache/dae2stl/link1_21940495.stl" scale="0.001 -0.001 0.001" />
+    <mesh name="link1_31223989" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/mesh_cache/dae2stl/link1_31223989.stl" scale="0.001 -0.001 0.001" />
     <mesh name="link1_symp" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link1_symp.stl" scale="0.001 -0.001 0.001" />
-    <mesh name="link2_21940495" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/mesh_cache/dae2stl/link2_21940495.stl" scale="0.001 -0.001 0.001" />
+    <mesh name="link2_31223989" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/mesh_cache/dae2stl/link2_31223989.stl" scale="0.001 -0.001 0.001" />
     <mesh name="link2_symp" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link2_symp.stl" scale="0.001 -0.001 0.001" />
-    <mesh name="link3_21940495" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/mesh_cache/dae2stl/link3_21940495.stl" scale="0.001 -0.001 0.001" />
+    <mesh name="link3_31223989" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/mesh_cache/dae2stl/link3_31223989.stl" scale="0.001 -0.001 0.001" />
     <mesh name="link3_symp" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link3_symp.stl" scale="0.001 -0.001 0.001" />
-    <mesh name="link4_21940495" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/mesh_cache/dae2stl/link4_21940495.stl" scale="0.001 0.001 0.001" />
+    <mesh name="link4_31223989" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/mesh_cache/dae2stl/link4_31223989.stl" scale="0.001 0.001 0.001" />
     <mesh name="link4_symp" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link4_symp.stl" scale="0.001 0.001 0.001" />
-    <mesh name="link0_219404951" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/mesh_cache/dae2stl/link0_21940495.stl" scale="0.001 0.001 0.001" />
+    <mesh name="link0_312239891" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/mesh_cache/dae2stl/link0_31223989.stl" scale="0.001 0.001 0.001" />
     <mesh name="link0_symp1" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link0_symp.stl" scale="0.001 0.001 0.001" />
-    <mesh name="link1_219404951" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/mesh_cache/dae2stl/link1_21940495.stl" scale="0.001 0.001 0.001" />
+    <mesh name="link1_312239891" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/mesh_cache/dae2stl/link1_31223989.stl" scale="0.001 0.001 0.001" />
     <mesh name="link1_symp1" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link1_symp.stl" scale="0.001 0.001 0.001" />
-    <mesh name="link2_219404951" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/mesh_cache/dae2stl/link2_21940495.stl" scale="0.001 0.001 0.001" />
+    <mesh name="link2_312239891" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/mesh_cache/dae2stl/link2_31223989.stl" scale="0.001 0.001 0.001" />
     <mesh name="link2_symp1" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link2_symp.stl" scale="0.001 0.001 0.001" />
-    <mesh name="link3_219404951" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/mesh_cache/dae2stl/link3_21940495.stl" scale="0.001 0.001 0.001" />
+    <mesh name="link3_312239891" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/mesh_cache/dae2stl/link3_31223989.stl" scale="0.001 0.001 0.001" />
     <mesh name="link3_symp1" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link3_symp.stl" scale="0.001 0.001 0.001" />
     <mesh name="right_ForeArmStructure-Model" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_ForeArmStructure-Model.stl" scale="0.001 0.001 0.001" />
     <mesh name="right_TopTower-Model" content_type="model/stl" file="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_TopTower-Model.stl" scale="0.001 0.001 0.001" />
@@ -67,31 +67,31 @@
   <worldbody>
     <body name="openarm_body_link0">
       <inertial pos="0 0 0" mass="13.89" diaginertia="1.653 1.653 0.051" />
-      <geom name="openarm_body_link0_visual" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="body_link0_73238742" />
+      <geom name="openarm_body_link0_visual" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="body_link0_46747003" />
       <geom name="openarm_body_link0_collision" type="mesh" mesh="body_link0_symp" />
       <body name="openarm_left_link0" pos="0 0.031 0.698" quat="0.707105 -0.707108 0 0">
         <inertial pos="-0.000948336 -0.000158021 0.0307686" quat="0.479051 0.472241 -0.533622 0.512587" mass="1.14323" diaginertia="0.00147324 0.00112498 0.000961783" />
-        <geom name="openarm_left_link0_visual" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="link0_21940495" />
+        <geom name="openarm_left_link0_visual" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="link0_31223989" />
         <geom name="openarm_left_link0_collision" type="mesh" mesh="link0_symp" />
         <body name="openarm_left_link1" pos="0 0 0.0625">
           <inertial pos="0.00114677 -3.31999e-05 0.0539528" quat="0.999653 0.00178277 0.0262159 -0.0018256" mass="1.14167" diaginertia="0.00156853 0.001273 0.00101447" />
           <joint name="openarm_left_joint1" pos="0 0 0" axis="0 0 1" range="-3.49066 1.39626" actuatorfrcrange="-40 40" class="arm_joint" />
-          <geom name="openarm_left_link1_visual" pos="0 0 -0.0625" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="link1_21940495" />
+          <geom name="openarm_left_link1_visual" pos="0 0 -0.0625" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="link1_31223989" />
           <geom name="openarm_left_link1_collision" pos="0 0 -0.0625" type="mesh" mesh="link1_symp" />
           <body name="openarm_left_link2" pos="-0.0301 0 0.06" quat="0.707107 -0.707107 0 0">
             <inertial pos="0.00839629 2.01451e-08 0.0325665" quat="0.966167 0.00423301 0.257864 0.00305037" mass="0.277509" diaginertia="0.000421651 0.000376006 0.000169343" />
             <joint name="openarm_left_joint2" pos="0 0 0" axis="-1 0 0" range="-3.31613 0.174533" actuatorfrcrange="-40 40" class="arm_joint" />
-            <geom name="openarm_left_link2_visual" pos="0.0301 0 -0.1225" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="link2_21940495" />
+            <geom name="openarm_left_link2_visual" pos="0.0301 0 -0.1225" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="link2_31223989" />
             <geom name="openarm_left_link2_collision" pos="0.0301 0 -0.1225" type="mesh" mesh="link2_symp" />
             <body name="openarm_left_link3" pos="0.0301 0 0.06625">
               <inertial pos="-0.00210475 -0.000554909 0.0904747" quat="0.999951 -0.00493243 -0.00144148 0.00846755" mass="1.07386" diaginertia="0.00437205 0.00431934 0.000660613" />
               <joint name="openarm_left_joint3" pos="0 0 0" axis="0 0 1" range="-1.5708 1.5708" actuatorfrcrange="-27 27" class="arm_joint" />
-              <geom name="openarm_left_link3_visual" pos="0 0 -0.18875" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="link3_21940495" />
+              <geom name="openarm_left_link3_visual" pos="0 0 -0.18875" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="link3_31223989" />
               <geom name="openarm_left_link3_collision" pos="0 0 -0.18875" quat="1 0 0 0" type="mesh" mesh="link3_symp" />
               <body name="openarm_left_link4" pos="0 0.0315 0.15375">
                 <inertial pos="-0.00290068 -0.0303058 0.0633964" quat="0.994282 0.0996876 0.0329726 -0.0194356" mass="0.634853" diaginertia="0.000624355 0.000518596 0.000325049" />
                 <joint name="openarm_left_joint4" pos="0 0 0" axis="0 1 0" range="0 2.44346" actuatorfrcrange="-27 27" class="arm_joint" />
-                <geom name="openarm_left_link4_visual" pos="0 -0.0315 -0.3425" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="link4_21940495" />
+                <geom name="openarm_left_link4_visual" pos="0 -0.0315 -0.3425" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="link4_31223989" />
                 <geom name="openarm_left_link4_collision" pos="0 -0.0315 -0.3425" type="mesh" mesh="link4_symp" />
                 <body name="orcahand_left_ForeArmStructure-Model_e18f2368" pos="0.01 -0.0315 0.153" quat="0.707107 0.707107 0 0">
                   <inertial pos="0 0 0" quat="0.52671 0.47178 -0.52671 0.47178" mass="7.42253" diaginertia="132.904 128.659 109.533" />
@@ -212,27 +212,27 @@
       </body>
       <body name="openarm_right_link0" pos="0 -0.031 0.698" quat="0.707105 0.707108 0 0">
         <inertial pos="-0.000948336 0.000158021 0.0307686" quat="0.479051 0.472241 -0.533622 0.512587" mass="1.14323" diaginertia="0.00147324 0.00112498 0.000961783" />
-        <geom name="openarm_right_link0_visual" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="link0_219404951" />
+        <geom name="openarm_right_link0_visual" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="link0_312239891" />
         <geom name="openarm_right_link0_collision" type="mesh" mesh="link0_symp1" />
         <body name="openarm_right_link1" pos="0 0 0.0625">
           <inertial pos="0.00114677 3.31999e-05 0.0539528" quat="0.999653 0.00178277 0.0262159 -0.0018256" mass="1.14167" diaginertia="0.00156853 0.001273 0.00101447" />
           <joint name="openarm_right_joint1" pos="0 0 0" axis="0 0 1" range="-1.39626 3.49066" actuatorfrcrange="-40 40" class="arm_joint" />
-          <geom name="openarm_right_link1_visual" pos="0 0 -0.0625" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="link1_219404951" />
+          <geom name="openarm_right_link1_visual" pos="0 0 -0.0625" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="link1_312239891" />
           <geom name="openarm_right_link1_collision" pos="0 0 -0.0625" type="mesh" mesh="link1_symp1" />
           <body name="openarm_right_link2" pos="-0.0301 0 0.06" quat="0.707107 0.707107 0 0">
             <inertial pos="0.00839629 -2.01451e-08 0.0325665" quat="0.966167 0.00423301 0.257864 0.00305037" mass="0.277509" diaginertia="0.000421651 0.000376006 0.000169343" />
             <joint name="openarm_right_joint2" pos="0 0 0" axis="-1 0 0" range="-0.174533 3.31613" actuatorfrcrange="-40 40" class="arm_joint" />
-            <geom name="openarm_right_link2_visual" pos="0.0301 0 -0.1225" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="link2_219404951" />
+            <geom name="openarm_right_link2_visual" pos="0.0301 0 -0.1225" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="link2_312239891" />
             <geom name="openarm_right_link2_collision" pos="0.0301 0 -0.1225" type="mesh" mesh="link2_symp1" />
             <body name="openarm_right_link3" pos="0.0301 0 0.06625">
               <inertial pos="-0.00210475 0.000554909 0.0904747" quat="0.999951 -0.00493243 -0.00144148 0.00846755" mass="1.07386" diaginertia="0.00437205 0.00431934 0.000660613" />
               <joint name="openarm_right_joint3" pos="0 0 0" axis="0 0 1" range="-1.5708 1.5708" actuatorfrcrange="-27 27" class="arm_joint" />
-              <geom name="openarm_right_link3_visual" pos="0 0 -0.18875" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="link3_219404951" />
+              <geom name="openarm_right_link3_visual" pos="0 0 -0.18875" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="link3_312239891" />
               <geom name="openarm_right_link3_collision" pos="0 0 -0.18875" quat="1 0 0 0" type="mesh" mesh="link3_symp1" />
               <body name="openarm_right_link4" pos="0 0.0315 0.15375">
                 <inertial pos="-0.00290068 -0.0303058 0.0633964" quat="0.994282 0.0996876 0.0329726 -0.0194356" mass="0.634853" diaginertia="0.000624355 0.000518596 0.000325049" />
                 <joint name="openarm_right_joint4" pos="0 0 0" axis="0 1 0" range="0 2.44346" actuatorfrcrange="-27 27" class="arm_joint" />
-                <geom name="openarm_right_link4_visual" pos="0 -0.0315 -0.3425" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="link4_21940495" />
+                <geom name="openarm_right_link4_visual" pos="0 -0.0315 -0.3425" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="link4_31223989" />
                 <geom name="openarm_right_link4_collision" pos="0 -0.0315 -0.3425" type="mesh" mesh="link4_symp" />
                 <body name="orcahand_right_ForeArmStructure-Model_e18f2368" pos="-0.01 -0.0315 0.153" quat="0 0 0.707107 0.707107">
                   <inertial pos="0 0 0" quat="0.52671 0.47178 -0.52671 0.47178" mass="7.42253" diaginertia="132.904 128.659 109.533" />

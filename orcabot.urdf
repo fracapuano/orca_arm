@@ -10,13 +10,13 @@
     <visual name="openarm_body_link0_visual">
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/body/v10/visual/body_link0.dae" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/body/v10/visual/body_link0.dae" scale="0.001 0.001 0.001" />
       </geometry>
     </visual>
     <collision name="openarm_body_link0_collision">
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/body/v10/collision/body_link0_symp.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/body/v10/collision/body_link0_symp.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
     <inertial>
@@ -34,13 +34,13 @@
     <visual name="openarm_left_link0_visual">
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/visual/link0.dae" scale="0.001 -0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/visual/link0.dae" scale="0.001 -0.001 0.001" />
       </geometry>
     </visual>
     <collision name="openarm_left_link0_collision">
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link0_symp.stl" scale="0.001 -0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link0_symp.stl" scale="0.001 -0.001 0.001" />
       </geometry>
     </collision>
     <inertial>
@@ -53,13 +53,13 @@
     <visual name="openarm_left_link1_visual">
       <origin rpy="0.0 0.0 0.0" xyz="-0.0 0.0 -0.0625" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/visual/link1.dae" scale="0.001 -0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/visual/link1.dae" scale="0.001 -0.001 0.001" />
       </geometry>
     </visual>
     <collision name="openarm_left_link1_collision">
       <origin rpy="0.0 0.0 0.0" xyz="-0.0 0.0 -0.0625" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link1_symp.stl" scale="0.001 -0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link1_symp.stl" scale="0.001 -0.001 0.001" />
       </geometry>
     </collision>
     <inertial>
@@ -79,13 +79,13 @@
     <visual name="openarm_left_link2_visual">
       <origin rpy="0.0 0.0 0.0" xyz="0.0301 0.0 -0.1225" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/visual/link2.dae" scale="0.001 -0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/visual/link2.dae" scale="0.001 -0.001 0.001" />
       </geometry>
     </visual>
     <collision name="openarm_left_link2_collision">
       <origin rpy="0.0 0.0 0.0" xyz="0.0301 0.0 -0.1225" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link2_symp.stl" scale="0.001 -0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link2_symp.stl" scale="0.001 -0.001 0.001" />
       </geometry>
     </collision>
     <inertial>
@@ -105,13 +105,13 @@
     <visual name="openarm_left_link3_visual">
       <origin rpy="0.0 0.0 0.0" xyz="-0.0 -0.0 -0.18875" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/visual/link3.dae" scale="0.001 -0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/visual/link3.dae" scale="0.001 -0.001 0.001" />
       </geometry>
     </visual>
     <collision name="openarm_left_link3_collision">
       <origin rpy="0.0 0.0 0.0" xyz="-0.0 -0.0 -0.18875" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link3_symp.stl" scale="0.001 -0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link3_symp.stl" scale="0.001 -0.001 0.001" />
       </geometry>
     </collision>
     <inertial>
@@ -131,13 +131,13 @@
     <visual name="openarm_left_link4_visual">
       <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.0315 -0.3425" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/visual/link4.dae" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/visual/link4.dae" scale="0.001 0.001 0.001" />
       </geometry>
     </visual>
     <collision name="openarm_left_link4_collision">
       <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.0315 -0.3425" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link4_symp.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link4_symp.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
     <inertial>
@@ -162,13 +162,13 @@
     <visual name="openarm_right_link0_visual">
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/visual/link0.dae" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/visual/link0.dae" scale="0.001 0.001 0.001" />
       </geometry>
     </visual>
     <collision name="openarm_right_link0_collision">
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link0_symp.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link0_symp.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
     <inertial>
@@ -181,13 +181,13 @@
     <visual name="openarm_right_link1_visual">
       <origin rpy="0.0 0.0 0.0" xyz="-0.0 0.0 -0.0625" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/visual/link1.dae" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/visual/link1.dae" scale="0.001 0.001 0.001" />
       </geometry>
     </visual>
     <collision name="openarm_right_link1_collision">
       <origin rpy="0.0 0.0 0.0" xyz="-0.0 0.0 -0.0625" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link1_symp.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link1_symp.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
     <inertial>
@@ -207,13 +207,13 @@
     <visual name="openarm_right_link2_visual">
       <origin rpy="0.0 0.0 0.0" xyz="0.0301 0.0 -0.1225" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/visual/link2.dae" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/visual/link2.dae" scale="0.001 0.001 0.001" />
       </geometry>
     </visual>
     <collision name="openarm_right_link2_collision">
       <origin rpy="0.0 0.0 0.0" xyz="0.0301 0.0 -0.1225" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link2_symp.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link2_symp.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
     <inertial>
@@ -233,13 +233,13 @@
     <visual name="openarm_right_link3_visual">
       <origin rpy="0.0 0.0 0.0" xyz="-0.0 -0.0 -0.18875" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/visual/link3.dae" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/visual/link3.dae" scale="0.001 0.001 0.001" />
       </geometry>
     </visual>
     <collision name="openarm_right_link3_collision">
       <origin rpy="0.0 0.0 0.0" xyz="-0.0 -0.0 -0.18875" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link3_symp.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link3_symp.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
     <inertial>
@@ -259,13 +259,13 @@
     <visual name="openarm_right_link4_visual">
       <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.0315 -0.3425" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/visual/link4.dae" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/visual/link4.dae" scale="0.001 0.001 0.001" />
       </geometry>
     </visual>
     <collision name="openarm_right_link4_collision">
       <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.0315 -0.3425" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link4_symp.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/openarm_description_repo/meshes/arm/v10/collision/link4_symp.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
     <inertial>
@@ -293,14 +293,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_ForeArmStructure-Model.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_ForeArmStructure-Model.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_ForeArmStructure-Model.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_ForeArmStructure-Model.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -313,14 +313,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_TopTower-Model.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_TopTower-Model.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_TopTower-Model.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_TopTower-Model.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -333,14 +333,14 @@
     <visual>
       <origin xyz="-0.004999999999999997 -0.0018770780631086805 0.049500000670552255" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_R-Carpals.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_R-Carpals.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="-0.004999999999999997 -0.0018770780631086805 0.049500000670552255" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_R-Carpals.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_R-Carpals.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -353,14 +353,14 @@
     <visual>
       <origin xyz="-0.017749999999999967 -2.42861286636753e-17 -0.0010000000000000217" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_P-AP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_P-AP.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="-0.017749999999999967 -2.42861286636753e-17 -0.0010000000000000217" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_P-AP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_P-AP.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -373,14 +373,14 @@
     <visual>
       <origin xyz="4.1531875769068695e-17 -9.105164359140306e-18 -3.8292038109168244e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_P-PP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_P-PP.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="4.1531875769068695e-17 -9.105164359140306e-18 -3.8292038109168244e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_P-PP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_P-PP.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -393,14 +393,14 @@
     <visual>
       <origin xyz="-5.593042944930372e-17 -9.962165250943912e-18 1.5546348698018324e-16" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_P-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_P-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="-5.593042944930372e-17 -9.962165250943912e-18 1.5546348698018324e-16" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_P-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_P-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -413,14 +413,14 @@
     <visual>
       <origin xyz="-0.019249999999999923 -1.734723475976807e-18 -0.0009999999999999961" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-AP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-AP.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="-0.019249999999999923 -1.734723475976807e-18 -0.0009999999999999961" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-AP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-AP.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -433,14 +433,14 @@
     <visual>
       <origin xyz="-1.7894285379910634e-17 -1.0522308765464415e-17 1.0523467387009805e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-PP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-PP.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="-1.7894285379910634e-17 -1.0522308765464415e-17 1.0523467387009805e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-PP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-PP.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -453,14 +453,14 @@
     <visual>
       <origin xyz="4.078794186312799e-17 -1.9049422236114406e-17 1.0521305495457033e-16" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="4.078794186312799e-17 -1.9049422236114406e-17 1.0521305495457033e-16" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -473,14 +473,14 @@
     <visual>
       <origin xyz="-0.019249999999999982 1.214306433183765e-17 -0.0010000000000000213" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-AP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-AP.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="-0.019249999999999982 1.214306433183765e-17 -0.0010000000000000213" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-AP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-AP.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -493,14 +493,14 @@
     <visual>
       <origin xyz="7.162795302343035e-17 1.2189131211851784e-17 1.7580316556723272e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-PP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-PP.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="7.162795302343035e-17 1.2189131211851784e-17 1.7580316556723272e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-PP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-PP.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -513,14 +513,14 @@
     <visual>
       <origin xyz="5.004759988748243e-17 1.4318233198945493e-17 1.6821919643190915e-16" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="5.004759988748243e-17 1.4318233198945493e-17 1.6821919643190915e-16" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_M-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -533,14 +533,14 @@
     <visual>
       <origin xyz="-0.01875000000000003 -1.734723475976807e-18 -0.000999999999999964" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_I-AP-R.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_I-AP-R.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="-0.01875000000000003 -1.734723475976807e-18 -0.000999999999999964" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_I-AP-R.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_I-AP-R.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -553,14 +553,14 @@
     <visual>
       <origin xyz="8.461858417315034e-17 -1.4799510442361432e-17 1.3855749603332276e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_I-PP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_I-PP.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="8.461858417315034e-17 -1.4799510442361432e-17 1.3855749603332276e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_I-PP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_I-PP.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -573,14 +573,14 @@
     <visual>
       <origin xyz="6.384780199281326e-17 1.6933625513663662e-18 9.316585525567554e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_I-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_I-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="6.384780199281326e-17 1.6933625513663662e-18 9.316585525567554e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_I-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_I-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -593,14 +593,14 @@
     <visual>
       <origin xyz="-4.228388472693467e-18 -4.911435841359335e-17 -0.003850000000000067" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_T-TP-R.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_T-TP-R.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="-4.228388472693467e-18 -4.911435841359335e-17 -0.003850000000000067" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_T-TP-R.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_T-TP-R.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -613,14 +613,14 @@
     <visual>
       <origin xyz="-0.028 2.6020852139652106e-17 -9.540979117872439e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_R-T-AP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_R-T-AP.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="-0.028 2.6020852139652106e-17 -9.540979117872439e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_R-T-AP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_R-T-AP.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -633,14 +633,14 @@
     <visual>
       <origin xyz="1.969071627370024e-16 -3.15114617423654e-17 -2.696802036606928e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_T-PP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_T-PP.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="1.969071627370024e-16 -3.15114617423654e-17 -2.696802036606928e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_T-PP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_T-PP.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -653,14 +653,14 @@
     <visual>
       <origin xyz="2.6951590953616836e-16 -1.4511389580442956e-16 4.4964986238156687e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_T-DP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_T-DP.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="2.6951590953616836e-16 -1.4511389580442956e-16 4.4964986238156687e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_T-DP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_right/right_T-DP.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -802,14 +802,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_ForeArmStructure-Model.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_ForeArmStructure-Model.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_ForeArmStructure-Model.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_ForeArmStructure-Model.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -822,14 +822,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_TopTower-Model.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_TopTower-Model.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_TopTower-Model.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_TopTower-Model.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -842,14 +842,14 @@
     <visual>
       <origin xyz="-0.004999999999999994 -0.001877078063108656 0.04950000067055224" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_L-Carpals.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_L-Carpals.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="-0.004999999999999994 -0.001877078063108656 0.04950000067055224" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_L-Carpals.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_L-Carpals.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -862,14 +862,14 @@
     <visual>
       <origin xyz="-0.01774999999999991 -6.201636426617085e-17 -0.0009999999999999866" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_P-AP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_P-AP.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="-0.01774999999999991 -6.201636426617085e-17 -0.0009999999999999866" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_P-AP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_P-AP.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -882,14 +882,14 @@
     <visual>
       <origin xyz="1.2505891133485139e-18 2.0021543922218088e-17 5.1761470187350585e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_P-PP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_P-PP.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="1.2505891133485139e-18 2.0021543922218088e-17 5.1761470187350585e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_P-PP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_P-PP.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -902,14 +902,14 @@
     <visual>
       <origin xyz="-5.74536201685304e-18 2.544098244259518e-17 2.2826085315357464e-16" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_P-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_P-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="-5.74536201685304e-18 2.544098244259518e-17 2.2826085315357464e-16" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_P-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_P-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -922,14 +922,14 @@
     <visual>
       <origin xyz="-0.019249999999999958 6.938893903907228e-18 -0.0009999999999999905" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-AP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-AP.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="-0.019249999999999958 6.938893903907228e-18 -0.0009999999999999905" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-AP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-AP.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -942,14 +942,14 @@
     <visual>
       <origin xyz="-7.77890138008401e-19 -5.960928375611919e-19 1.4035114566359072e-16" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-PP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-PP.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="-7.77890138008401e-19 -5.960928375611919e-19 1.4035114566359072e-16" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-PP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-PP.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -962,14 +962,14 @@
     <visual>
       <origin xyz="-3.0277404230089883e-19 -3.103847689461043e-17 4.554030083181501e-18" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="-3.0277404230089883e-19 -3.103847689461043e-17 4.554030083181501e-18" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -982,14 +982,14 @@
     <visual>
       <origin xyz="-0.019249999999999934 2.6020852139652106e-17 -0.0009999999999999913" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-AP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-AP.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="-0.019249999999999934 2.6020852139652106e-17 -0.0009999999999999913" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-AP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-AP.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -1002,14 +1002,14 @@
     <visual>
       <origin xyz="3.0357660829593107e-18 1.7841522994185985e-17 1.3882633405336455e-16" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-PP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-PP.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="3.0357660829593107e-18 1.7841522994185985e-17 1.3882633405336455e-16" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-PP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-PP.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -1022,14 +1022,14 @@
     <visual>
       <origin xyz="1.474514954580278e-17 2.2103714476980423e-17 1.665934659025852e-16" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="1.474514954580278e-17 2.2103714476980423e-17 1.665934659025852e-16" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_M-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -1042,14 +1042,14 @@
     <visual>
       <origin xyz="-0.018750000000000086 1.8214596497756474e-17 -0.000999999999999993" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_I-AP-L.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_I-AP-L.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="-0.018750000000000086 1.8214596497756474e-17 -0.000999999999999993" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_I-AP-L.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_I-AP-L.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -1062,14 +1062,14 @@
     <visual>
       <origin xyz="3.9536780632609477e-19 8.231990831039655e-18 -1.396150100408705e-16" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_I-PP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_I-PP.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="3.9536780632609477e-19 8.231990831039655e-18 -1.396150100408705e-16" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_I-PP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_I-PP.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -1082,14 +1082,14 @@
     <visual>
       <origin xyz="-4.938281810987171e-18 1.7671634284259278e-17 5.964481871782928e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_I-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_I-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="-4.938281810987171e-18 1.7671634284259278e-17 5.964481871782928e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_I-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_I-FingerTipAssembly.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -1102,14 +1102,14 @@
     <visual>
       <origin xyz="-1.5016200088924236e-17 -5.139118297581291e-17 -0.0038500000000000643" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_T-TP-L.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_T-TP-L.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="-1.5016200088924236e-17 -5.139118297581291e-17 -0.0038500000000000643" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_T-TP-L.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_T-TP-L.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -1122,14 +1122,14 @@
     <visual>
       <origin xyz="-0.028000000000000018 2.7755575615628914e-17 -2.7321894746634712e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_L-T-AP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_L-T-AP.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="-0.028000000000000018 2.7755575615628914e-17 -2.7321894746634712e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_L-T-AP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_L-T-AP.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -1142,14 +1142,14 @@
     <visual>
       <origin xyz="3.7171156597089945e-17 5.821788984262281e-17 -6.75998716698855e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_T-PP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_T-PP.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="3.7171156597089945e-17 5.821788984262281e-17 -6.75998716698855e-17" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_T-PP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_T-PP.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -1162,14 +1162,14 @@
     <visual>
       <origin xyz="-6.724022184779712e-17 4.880775102973274e-17 -1.5021079906053094e-16" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_T-DP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_T-DP.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="orcahand_white" />
     </visual>
     <collision>
       <origin xyz="-6.724022184779712e-17 4.880775102973274e-17 -1.5021079906053094e-16" rpy="0.0 0.0 0.0" />
       <geometry>
-        <mesh filename="file:///Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_T-DP.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="/Users/fracapuano/Documents/orca_arm/mesh_cache/orcahand_left/left_T-DP.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
