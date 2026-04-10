@@ -4,14 +4,22 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "orca_arm"
-version = "0.1.0"
-description = "Orcabot: bimanual OpenArm with two OrcaHand v2 end effectors. Provides URDF/MJCF assets and Python paths to them."
+version = "0.2.0"
+description = "Orcabot: bimanual OpenArm with two OrcaHand v2 end effectors. Provides URDF/MJCF assets and Python paths to them, with all meshes bundled in the package."
 readme = "README.md"
 requires-python = ">=3.9"
 authors = [{ name = "Francesco Capuano" }]
 
 [tool.setuptools]
 packages = ["orca_arm"]
+include-package-data = true
 
 [tool.setuptools.package-data]
-orca_arm = ["../orcabot.urdf", "../orcabot.xml"]
+orca_arm = [
+    "orcabot.urdf",
+    "orcabot.xml",
+    "assets/*.stl",
+    "assets/*.dae",
+    "assets/*.STL",
+    "assets/*.DAE",
+]

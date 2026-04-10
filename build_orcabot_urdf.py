@@ -19,7 +19,9 @@ ORCAHAND_DESC = os.path.join(BASE_DIR, "orcahand_repo")
 ORCAHAND_URDF_RIGHT = os.path.join(ORCAHAND_DESC, "v2", "models", "urdf", "orcahand_right.urdf")
 ORCAHAND_URDF_LEFT = os.path.join(ORCAHAND_DESC, "v2", "models", "urdf", "orcahand_left.urdf")
 OPENARM_XACRO = os.path.join(OPENARM_DESC, "urdf", "robot", "v10.urdf.xacro")
-OUTPUT_URDF = os.path.join(BASE_DIR, "orcabot.urdf")
+PACKAGE_DIR = os.path.join(BASE_DIR, "orca_arm")
+ASSETS_DIR = os.path.join(PACKAGE_DIR, "assets")
+OUTPUT_URDF = os.path.join(PACKAGE_DIR, "orcabot.urdf")
 
 # ── Step 0: Monkey-patch ament_index_python for $(find ...) resolution ─────
 # xacro uses ament_index_python.get_package_share_directory for $(find pkg)
@@ -94,18 +96,44 @@ openarm_tree = ET.ElementTree(ET.fromstring(openarm_xml_str))
 openarm_root = openarm_tree.getroot()
 
 import math
+import hashlib
+
+# Stage every referenced mesh into orca_arm/assets/ with a unique flat
+# name and emit URDF mesh references as paths relative to the URDF's
+# location. SAPIEN, MuJoCo, and PyBullet all resolve relative mesh paths
+# against the URDF's directory, which makes the package self-contained:
+# pip install ships orca_arm/orcabot.urdf alongside orca_arm/assets/, and
+# downstream consumers don't need the source repo or its submodules.
+os.makedirs(ASSETS_DIR, exist_ok=True)
+
+def stage_mesh(src_abs_path, name_hint=None):
+    """Copy src into assets/ with a unique flat name; return the path
+    relative to the URDF location (orca_arm/orcabot.urdf)."""
+    base = os.path.basename(src_abs_path)
+    if name_hint:
+        name = f"{name_hint}_{base}"
+    else:
+        # Disambiguate by hashing the full source path so files with
+        # identical basenames in different source dirs don't collide.
+        h = hashlib.md5(src_abs_path.encode()).hexdigest()[:8]
+        name = f"{h}_{base}"
+    dst = os.path.join(ASSETS_DIR, name)
+    if not os.path.exists(dst):
+        shutil.copyfile(src_abs_path, dst)
+    return f"assets/{name}"
 
 def fix_mesh_path(mesh_elem):
-    """Convert package:// URIs to absolute file:// paths for standalone use."""
+    """Resolve package:// URIs, stage the mesh into assets/, and rewrite
+    the filename attribute to a path relative to the URDF location."""
     filename = mesh_elem.get("filename", "")
     if filename.startswith("package://orcahand_description/"):
         rel_path = filename.replace("package://orcahand_description/", "")
-        abs_path = os.path.join(ORCAHAND_DESC, rel_path)
-        mesh_elem.set("filename", abs_path)
+        src = os.path.join(ORCAHAND_DESC, rel_path)
+        mesh_elem.set("filename", stage_mesh(src))
     elif filename.startswith("package://openarm_description/"):
         rel_path = filename.replace("package://openarm_description/", "")
-        abs_path = os.path.join(OPENARM_DESC, rel_path)
-        mesh_elem.set("filename", abs_path)
+        src = os.path.join(OPENARM_DESC, rel_path)
+        mesh_elem.set("filename", stage_mesh(src))
 
 # Add orcahand material (white) once
 mat_elem = ET.SubElement(openarm_root, "material")
@@ -182,24 +210,17 @@ for side, orca_urdf_path in SIDES:
     def prefix_name(name, _p=ORCA_PREFIX):
         return _p + name
 
-    # Copy hand meshes into a side-specific cache dir with unique basenames,
-    # so trimesh's basename-keyed mesh cache does not collapse shared names
-    # (e.g. left/ForeArmStructure-Model.stl and right/ForeArmStructure-Model.stl)
-    # into the same geometry.
-    mesh_cache_dir = os.path.join(BASE_DIR, "mesh_cache", f"orcahand_{side}")
-    os.makedirs(mesh_cache_dir, exist_ok=True)
-
-    def rebase_mesh_to_cache(mesh_elem, _side=side, _cache=mesh_cache_dir):
+    # Stage hand meshes into orca_arm/assets/ with a side-specific name
+    # prefix. The prefix prevents trimesh's basename-keyed mesh cache
+    # from collapsing shared names (e.g. left/ForeArmStructure-Model.stl
+    # and right/ForeArmStructure-Model.stl) into the same geometry.
+    def rebase_hand_mesh(mesh_elem, _side=side):
         fn = mesh_elem.get("filename", "")
         if not fn.startswith("package://orcahand_description/"):
             return
         rel = fn.replace("package://orcahand_description/", "")
         src = os.path.join(ORCAHAND_DESC, rel)
-        unique_name = f"{_side}_{os.path.basename(src)}"
-        dst = os.path.join(_cache, unique_name)
-        if not os.path.exists(dst):
-            shutil.copyfile(src, dst)
-        mesh_elem.set("filename", dst)
+        mesh_elem.set("filename", stage_mesh(src, name_hint=_side))
 
     # Add prefixed orcahand links
     for link in orca_links:
@@ -208,7 +229,7 @@ for side, orca_urdf_path in SIDES:
         new_link.set("name", prefix_name(old_name))
 
         for mesh in new_link.iter("mesh"):
-            rebase_mesh_to_cache(mesh)
+            rebase_hand_mesh(mesh)
         for mat in new_link.iter("material"):
             if mat.get("name") == "white":
                 mat.set("name", "orcahand_white")
@@ -274,7 +295,7 @@ for side, orca_urdf_path in SIDES:
         origin_elem.set("xyz", "0.01 -0.0315 0.153")
         origin_elem.set("rpy", f"{math.pi/2} 0 0")
 
-# Fix mesh paths in openarm links too (package:// -> file://)
+# Stage openarm meshes into assets/ and rewrite to relative paths
 for mesh in openarm_root.iter("mesh"):
     fix_mesh_path(mesh)
 
