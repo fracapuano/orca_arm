@@ -20,6 +20,7 @@ viz = [
     "yourdfpy"
 ]
 
+
 [tool.setuptools.package-data]
 orca_arm = [
     "orcabot.urdf",
