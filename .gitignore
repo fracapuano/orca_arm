@@ -5,3 +5,6 @@ orcabot_mjcf_input.urdf
 *.egg-info/
 build/
 dist/
+
+
+.DS_Store
