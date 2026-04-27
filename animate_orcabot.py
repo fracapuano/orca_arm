@@ -4,10 +4,10 @@ import yourdfpy
 import meshcat
 import meshcat.geometry as g
 import numpy as np
-import os
 import time
+import orca_arm
 
-URDF_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "orcabot.urdf")
+URDF_PATH = orca_arm.URDF_PATH
 
 print("Loading URDF...")
 robot = yourdfpy.URDF.load(URDF_PATH)
