@@ -153,6 +153,32 @@
     <axis xyz="0 1 0" />
     <limit effort="27" lower="0.0" upper="2.443461" velocity="5.445426" />
   </joint>
+  <link name="openarm_left_link5">
+    <visual name="openarm_left_link5_visual">
+      <origin rpy="0.0 0.0 0.0" xyz="-0.0 -0.0 -0.438" />
+      <geometry>
+        <mesh filename="assets/ea8b2f05_link5.dae" scale="0.001 -0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="openarm_left_link5_collision">
+      <origin rpy="0.0 0.0 0.0" xyz="-0.0 -0.0 -0.438" />
+      <geometry>
+        <mesh filename="assets/409f8fd3_link5_symp.stl" scale="0.001 -0.001 0.001" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0.0 0.0 0.0" xyz="-0.003049665024221911 -0.0008866902457326625 0.043079803024980934" />
+      <mass value="0.6156588026168502" />
+      <inertia ixx="0.000423" ixy="-8e-06" ixz="6e-06" iyy="0.000445" iyz="-6e-06" izz="0.000324" />
+    </inertial>
+  </link>
+  <joint name="openarm_left_joint5" type="revolute">
+    <origin rpy="0 0 0" xyz="0.0 -0.0315 0.0955" />
+    <parent link="openarm_left_link4" />
+    <child link="openarm_left_link5" />
+    <axis xyz="0 0 1" />
+    <limit effort="7" lower="-1.570796" upper="1.570796" velocity="20.943946" />
+  </joint>
   <joint name="openarm_right_openarm_body_link0_joint" type="fixed">
     <parent link="openarm_body_link0" />
     <child link="openarm_right_link0" />
@@ -280,6 +306,32 @@
     <child link="openarm_right_link4" />
     <axis xyz="0 1 0" />
     <limit effort="27" lower="0.0" upper="2.443461" velocity="5.445426" />
+  </joint>
+  <link name="openarm_right_link5">
+    <visual name="openarm_right_link5_visual">
+      <origin rpy="0.0 0.0 0.0" xyz="-0.0 -0.0 -0.438" />
+      <geometry>
+        <mesh filename="assets/ea8b2f05_link5.dae" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="openarm_right_link5_collision">
+      <origin rpy="0.0 0.0 0.0" xyz="-0.0 -0.0 -0.438" />
+      <geometry>
+        <mesh filename="assets/409f8fd3_link5_symp.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0.0 0.0 0.0" xyz="-0.003049665024221911 0.0008866902457326625 0.043079803024980934" />
+      <mass value="0.6156588026168502" />
+      <inertia ixx="0.000423" ixy="-8e-06" ixz="6e-06" iyy="0.000445" iyz="-6e-06" izz="0.000324" />
+    </inertial>
+  </link>
+  <joint name="openarm_right_joint5" type="revolute">
+    <origin rpy="0 0 0" xyz="0.0 -0.0315 0.0955" />
+    <parent link="openarm_right_link4" />
+    <child link="openarm_right_link5" />
+    <axis xyz="0 0 1" />
+    <limit effort="7" lower="-1.570796" upper="1.570796" velocity="20.943946" />
   </joint>
   <material name="orcahand_white">
     <color rgba="1 1 1 1" />
@@ -789,9 +841,9 @@
     <limit lower="-0.2617993877991494" upper="1.8675022996339325" effort="100" velocity="100" />
   </joint>
   <joint name="openarm_right_to_orcahand_joint" type="fixed">
-    <parent link="openarm_right_link4" />
+    <parent link="openarm_right_link5" />
     <child link="orcahand_right_ForeArmStructure-Model_e18f2368" />
-    <origin xyz="-0.01 -0.0315 0.153" rpy="1.5707963267948966 0 3.141592653589793" />
+    <origin xyz="-0.01 0 0.0575" rpy="1.5707963267948966 0 3.141592653589793" />
   </joint>
   <link name="orcahand_left_ForeArmStructure-Model_e18f2368">
     <inertial>
@@ -1298,8 +1350,8 @@
     <limit lower="-0.2617993877991494" upper="1.8675022996339325" effort="100" velocity="100" />
   </joint>
   <joint name="openarm_left_to_orcahand_joint" type="fixed">
-    <parent link="openarm_left_link4" />
+    <parent link="openarm_left_link5" />
     <child link="orcahand_left_ForeArmStructure-Model_e18f2368" />
-    <origin xyz="0.01 -0.0315 0.153" rpy="1.5707963267948966 0 0" />
+    <origin xyz="0.01 0 0.0575" rpy="1.5707963267948966 0 0" />
   </joint>
 </robot>
