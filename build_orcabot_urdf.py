@@ -157,10 +157,9 @@ for side, orca_urdf_path in SIDES:
     print(f"  Found {len(orca_links)} links, {len(orca_joints)} joints")
 
     # ── Step 3: Remove forearm + gripper from OpenArm ─────────────────────
-    print(f"[3/5] Removing OpenArm {side} link5-7, joint5-7 + gripper...")
+    print(f"[3/5] Removing OpenArm {side} link6-7, joint6-7 + gripper (keeping joint5/link5 = elbow rotation)...")
 
     remove_links = {
-        f"openarm_{side}_link5",
         f"openarm_{side}_link6",
         f"openarm_{side}_link7",
         f"openarm_{side}_hand",
@@ -174,7 +173,7 @@ for side, orca_urdf_path in SIDES:
 
     def is_removable_joint(joint_elem, _side=side, _rl=remove_links):
         name = joint_elem.get("name", "")
-        if name in (f"openarm_{_side}_joint5", f"openarm_{_side}_joint6", f"openarm_{_side}_joint7"):
+        if name in (f"openarm_{_side}_joint6", f"openarm_{_side}_joint7"):
             return True
         if f"{_side}_openarm_hand" in name:
             return True
@@ -269,30 +268,28 @@ for side, orca_urdf_path in SIDES:
 
         openarm_root.append(new_joint)
 
-    # Connecting fixed joint from openarm_{side}_link4 to orcahand root.
-    print(f"  Adding fixed joint: openarm_{side}_link4 -> orcahand {side} root...")
+    # Connecting fixed joint from openarm_{side}_link5 to orcahand root.
+    # link5 sits at (0, -0.0315, 0.0955) relative to link4 (joint5 origin),
+    # so the offset that previously placed the hand at (-0.01, -0.0315, 0.153)
+    # in link4's frame becomes (-0.01, 0, 0.0575) in link5's frame at zero
+    # joint5 angle. Same physical pose, just expressed one link further down.
+    print(f"  Adding fixed joint: openarm_{side}_link5 -> orcahand {side} root...")
     connect_joint = ET.SubElement(openarm_root, "joint")
     connect_joint.set("name", f"openarm_{side}_to_orcahand_joint")
     connect_joint.set("type", "fixed")
 
     parent_elem = ET.SubElement(connect_joint, "parent")
-    parent_elem.set("link", f"openarm_{side}_link4")
+    parent_elem.set("link", f"openarm_{side}_link5")
 
     child_elem = ET.SubElement(connect_joint, "child")
     child_elem.set("link", prefix_name("ForeArmStructure-Model_e18f2368"))
 
-    # Right side: keep original mount (palm faces outward from body).
-    # Left side: rotate 180° around the forearm (local z) axis so the
-    # palm faces inward toward the robot body, mirroring the right hand.
-    # The 180° flip around z is achieved by changing yaw pi -> 0, which
-    # also negates the x component of the base-center offset derivation,
-    # so conn_x flips sign (-0.01 -> 0.01).
     origin_elem = ET.SubElement(connect_joint, "origin")
     if side == "right":
-        origin_elem.set("xyz", "-0.01 -0.0315 0.153")
+        origin_elem.set("xyz", "-0.01 0 0.0575")
         origin_elem.set("rpy", f"{math.pi/2} 0 {math.pi}")
     else:
-        origin_elem.set("xyz", "0.01 -0.0315 0.153")
+        origin_elem.set("xyz", "0.01 0 0.0575")
         origin_elem.set("rpy", f"{math.pi/2} 0 0")
 
 # Stage openarm meshes into assets/ and rewrite to relative paths
