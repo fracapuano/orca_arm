@@ -113,10 +113,6 @@ def find_carpals_link(scene_, side):
 right_link = find_carpals_link(scene, "right")
 left_link = find_carpals_link(scene, "left")
 
-Rz_180 = np.diag([-1.0, -1.0, 1.0])
-Rx_180 = np.diag([1.0, -1.0, -1.0])
-side_offsets = {"right": Rz_180, "left": Rx_180}
-
 side_links = {"right": right_link, "left": left_link}
 triad_sides = []
 for side, link in side_links.items():
@@ -137,15 +133,16 @@ if not triad_sides:
 def wrist_world_transforms(scene_):
     """{side: 4x4 world transform} for the wrist triads at the current FK.
 
-    Each triad is a rigid offset of its own carpals link, so it tracks that
-    side's wrist independently."""
+    Position tracks each side's carpals link; orientation is forced to world
+    identity so both wrists' IK target frames are aligned with the global
+    X/Y/Z axes."""
     out = {}
     for side, link in side_links.items():
         if link is None:
             continue
         T_raw, _ = scene_.graph.get(link)
         T = T_raw.astype(np.float64).copy()
-        T[:3, :3] = T[:3, :3] @ side_offsets[side]
+        T[:3, :3] = np.eye(3)
         out[side] = T
     return out
 
