@@ -101,7 +101,6 @@ ET.SubElement(
     {
         "kp": str(ARM_KP),
         "kv": str(ARM_KV),
-        "ctrlrange": "-3.14 3.14",
         "forcerange": "-200 200",
     },
 )
@@ -114,7 +113,6 @@ ET.SubElement(
     {
         "kp": str(HAND_KP),
         "kv": str(HAND_KV),
-        "ctrlrange": "-2 2",
         "forcerange": "-5 5",
     },
 )
@@ -127,11 +125,34 @@ for index, child in enumerate(mroot):
 mroot.insert(insert_at, default)
 
 hinge_joint_names = []
+joint_ranges = {}
+
+
+def parse_range(range_text):
+    if not range_text:
+        return None
+    values = [float(value) for value in range_text.split()]
+    if len(values) != 2:
+        return None
+    return values
+
+
+def format_float(value):
+    return f"{value:.12g}"
+
+
 for joint in mroot.iter("joint"):
     name = joint.get("name")
     if not name:
         continue
     joint.set("class", joint_class(name))
+    joint_range = parse_range(joint.get("range"))
+    if joint_range is not None:
+        lo, hi = joint_range
+        joint_ranges[name] = (lo, hi)
+        home = min(max(0.0, lo), hi)
+        if home != 0.0:
+            joint.set("ref", format_float(home))
     hinge_joint_names.append(name)
 
 actuator = ET.Element("actuator")
@@ -140,6 +161,9 @@ for name in hinge_joint_names:
     position.set("class", joint_class(name))
     position.set("name", f"act_{name}")
     position.set("joint", name)
+    if name in joint_ranges:
+        lo, hi = joint_ranges[name]
+        position.set("ctrlrange", f"{format_float(lo)} {format_float(hi)}")
 mroot.append(actuator)
 
 ET.indent(mtree, space="  ")
@@ -147,6 +171,10 @@ mtree.write(MJCF_OUT, xml_declaration=False, encoding="unicode")
 
 m2 = mujoco.MjModel.from_xml_path(MJCF_OUT)
 d2 = mujoco.MjData(m2)
+for actuator_id in range(m2.nu):
+    joint_id = m2.actuator_trnid[actuator_id, 0]
+    qpos_addr = m2.jnt_qposadr[joint_id]
+    d2.ctrl[actuator_id] = m2.qpos0[qpos_addr]
 for _ in range(500):
     mujoco.mj_step(m2, d2)
 assert np.isfinite(d2.qpos).all(), "qpos went non-finite during step test"

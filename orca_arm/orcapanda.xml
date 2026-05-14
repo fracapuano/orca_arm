@@ -3,11 +3,11 @@
   <default>
     <default class="arm_joint">
       <joint damping="20.0" armature="0.5" />
-      <position kp="2000.0" kv="100.0" ctrlrange="-3.14 3.14" forcerange="-200 200" />
+      <position kp="2000.0" kv="100.0" forcerange="-200 200" />
     </default>
     <default class="hand_joint">
       <joint damping="0.5" armature="0.001" />
-      <position kp="20.0" kv="1.0" ctrlrange="-2 2" forcerange="-5 5" />
+      <position kp="20.0" kv="1.0" forcerange="-5 5" />
     </default>
   </default>
   <asset>
@@ -81,7 +81,7 @@
               <geom size="0.09" pos="0 0 -0.22" />
             </body>
             <body name="panda_link4" pos="0.0825 0 0" quat="0.707107 0.707107 0 0">
-              <joint name="panda_joint4" pos="0 0 0" axis="0 0 1" range="-3.0718 -0.0698" actuatorfrcrange="-87 87" damping="0.003" class="arm_joint" />
+              <joint name="panda_joint4" pos="0 0 0" axis="0 0 1" range="-3.0718 -0.0698" actuatorfrcrange="-87 87" damping="0.003" class="arm_joint" ref="-0.0698" />
               <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="panda_visual_link4" />
               <geom type="mesh" mesh="panda_collision_link4" />
               <body name="panda_link4_sc">
@@ -246,29 +246,29 @@
     </body>
   </worldbody>
   <actuator>
-    <position class="arm_joint" name="act_panda_joint1" joint="panda_joint1" />
-    <position class="arm_joint" name="act_panda_joint2" joint="panda_joint2" />
-    <position class="arm_joint" name="act_panda_joint3" joint="panda_joint3" />
-    <position class="arm_joint" name="act_panda_joint4" joint="panda_joint4" />
-    <position class="arm_joint" name="act_panda_joint5" joint="panda_joint5" />
-    <position class="arm_joint" name="act_panda_joint6" joint="panda_joint6" />
-    <position class="arm_joint" name="act_panda_joint7" joint="panda_joint7" />
-    <position class="hand_joint" name="act_orcahand_right_R-Carpals_8d1f1041_to_TopTower-Model_4a80d30e" joint="orcahand_right_R-Carpals_8d1f1041_to_TopTower-Model_4a80d30e" />
-    <position class="hand_joint" name="act_orcahand_right_P-AP_f5e42b61_to_R-Carpals_8d1f1041" joint="orcahand_right_P-AP_f5e42b61_to_R-Carpals_8d1f1041" />
-    <position class="hand_joint" name="act_orcahand_right_P-PP_1d411b9b_to_P-AP_f5e42b61" joint="orcahand_right_P-PP_1d411b9b_to_P-AP_f5e42b61" />
-    <position class="hand_joint" name="act_orcahand_right_P-FingerTipAssembly_cd219176_to_P-PP_1d411b9b" joint="orcahand_right_P-FingerTipAssembly_cd219176_to_P-PP_1d411b9b" />
-    <position class="hand_joint" name="act_orcahand_right_M-AP_6ec59111_to_R-Carpals_8d1f1041" joint="orcahand_right_M-AP_6ec59111_to_R-Carpals_8d1f1041" />
-    <position class="hand_joint" name="act_orcahand_right_M-PP_8660a1eb_to_M-AP_6ec59111" joint="orcahand_right_M-PP_8660a1eb_to_M-AP_6ec59111" />
-    <position class="hand_joint" name="act_orcahand_right_M-FingerTipAssembly_424a8e75_to_M-PP_8660a1eb" joint="orcahand_right_M-FingerTipAssembly_424a8e75_to_M-PP_8660a1eb" />
-    <position class="hand_joint" name="act_orcahand_right_M-AP_e04a96f2_to_R-Carpals_8d1f1041" joint="orcahand_right_M-AP_e04a96f2_to_R-Carpals_8d1f1041" />
-    <position class="hand_joint" name="act_orcahand_right_M-PP_08efa608_to_M-AP_e04a96f2" joint="orcahand_right_M-PP_08efa608_to_M-AP_e04a96f2" />
-    <position class="hand_joint" name="act_orcahand_right_M-FingerTipAssembly_34afb748_to_M-PP_08efa608" joint="orcahand_right_M-FingerTipAssembly_34afb748_to_M-PP_08efa608" />
-    <position class="hand_joint" name="act_orcahand_right_I-AP-R_d95d02d1_to_R-Carpals_8d1f1041" joint="orcahand_right_I-AP-R_d95d02d1_to_R-Carpals_8d1f1041" />
-    <position class="hand_joint" name="act_orcahand_right_I-PP_bacbd481_to_I-AP-R_d95d02d1" joint="orcahand_right_I-PP_bacbd481_to_I-AP-R_d95d02d1" />
-    <position class="hand_joint" name="act_orcahand_right_I-FingerTipAssembly_ec49c16c_to_I-PP_bacbd481" joint="orcahand_right_I-FingerTipAssembly_ec49c16c_to_I-PP_bacbd481" />
-    <position class="hand_joint" name="act_orcahand_right_T-TP-R_1c2b802d_to_R-Carpals_8d1f1041" joint="orcahand_right_T-TP-R_1c2b802d_to_R-Carpals_8d1f1041" />
-    <position class="hand_joint" name="act_orcahand_right_R-T-AP_a9723101_to_T-TP-R_1c2b802d" joint="orcahand_right_R-T-AP_a9723101_to_T-TP-R_1c2b802d" />
-    <position class="hand_joint" name="act_orcahand_right_T-PP_68395e98_to_R-T-AP_a9723101" joint="orcahand_right_T-PP_68395e98_to_R-T-AP_a9723101" />
-    <position class="hand_joint" name="act_orcahand_right_T-DP_b7429e50_to_T-PP_68395e98" joint="orcahand_right_T-DP_b7429e50_to_T-PP_68395e98" />
+    <position class="arm_joint" name="act_panda_joint1" joint="panda_joint1" ctrlrange="-2.8973 2.8973" />
+    <position class="arm_joint" name="act_panda_joint2" joint="panda_joint2" ctrlrange="-1.7628 1.7628" />
+    <position class="arm_joint" name="act_panda_joint3" joint="panda_joint3" ctrlrange="-2.8973 2.8973" />
+    <position class="arm_joint" name="act_panda_joint4" joint="panda_joint4" ctrlrange="-3.0718 -0.0698" />
+    <position class="arm_joint" name="act_panda_joint5" joint="panda_joint5" ctrlrange="-2.8973 2.8973" />
+    <position class="arm_joint" name="act_panda_joint6" joint="panda_joint6" ctrlrange="-0.0175 3.7525" />
+    <position class="arm_joint" name="act_panda_joint7" joint="panda_joint7" ctrlrange="-2.8973 2.8973" />
+    <position class="hand_joint" name="act_orcahand_right_R-Carpals_8d1f1041_to_TopTower-Model_4a80d30e" joint="orcahand_right_R-Carpals_8d1f1041_to_TopTower-Model_4a80d30e" ctrlrange="-1.13446 0.610865" />
+    <position class="hand_joint" name="act_orcahand_right_P-AP_f5e42b61_to_R-Carpals_8d1f1041" joint="orcahand_right_P-AP_f5e42b61_to_R-Carpals_8d1f1041" ctrlrange="-0.523599 0.523599" />
+    <position class="hand_joint" name="act_orcahand_right_P-PP_1d411b9b_to_P-AP_f5e42b61" joint="orcahand_right_P-PP_1d411b9b_to_P-AP_f5e42b61" ctrlrange="-0.436332 1.74533" />
+    <position class="hand_joint" name="act_orcahand_right_P-FingerTipAssembly_cd219176_to_P-PP_1d411b9b" joint="orcahand_right_P-FingerTipAssembly_cd219176_to_P-PP_1d411b9b" ctrlrange="-0.261799 1.8675" />
+    <position class="hand_joint" name="act_orcahand_right_M-AP_6ec59111_to_R-Carpals_8d1f1041" joint="orcahand_right_M-AP_6ec59111_to_R-Carpals_8d1f1041" ctrlrange="-0.471239 0.471239" />
+    <position class="hand_joint" name="act_orcahand_right_M-PP_8660a1eb_to_M-AP_6ec59111" joint="orcahand_right_M-PP_8660a1eb_to_M-AP_6ec59111" ctrlrange="-0.436332 1.74533" />
+    <position class="hand_joint" name="act_orcahand_right_M-FingerTipAssembly_424a8e75_to_M-PP_8660a1eb" joint="orcahand_right_M-FingerTipAssembly_424a8e75_to_M-PP_8660a1eb" ctrlrange="-0.261799 1.8675" />
+    <position class="hand_joint" name="act_orcahand_right_M-AP_e04a96f2_to_R-Carpals_8d1f1041" joint="orcahand_right_M-AP_e04a96f2_to_R-Carpals_8d1f1041" ctrlrange="-0.471239 0.471239" />
+    <position class="hand_joint" name="act_orcahand_right_M-PP_08efa608_to_M-AP_e04a96f2" joint="orcahand_right_M-PP_08efa608_to_M-AP_e04a96f2" ctrlrange="-0.436332 1.74533" />
+    <position class="hand_joint" name="act_orcahand_right_M-FingerTipAssembly_34afb748_to_M-PP_08efa608" joint="orcahand_right_M-FingerTipAssembly_34afb748_to_M-PP_08efa608" ctrlrange="-0.261799 1.8675" />
+    <position class="hand_joint" name="act_orcahand_right_I-AP-R_d95d02d1_to_R-Carpals_8d1f1041" joint="orcahand_right_I-AP-R_d95d02d1_to_R-Carpals_8d1f1041" ctrlrange="-0.436332 0.523599" />
+    <position class="hand_joint" name="act_orcahand_right_I-PP_bacbd481_to_I-AP-R_d95d02d1" joint="orcahand_right_I-PP_bacbd481_to_I-AP-R_d95d02d1" ctrlrange="-0.436332 1.74533" />
+    <position class="hand_joint" name="act_orcahand_right_I-FingerTipAssembly_ec49c16c_to_I-PP_bacbd481" joint="orcahand_right_I-FingerTipAssembly_ec49c16c_to_I-PP_bacbd481" ctrlrange="-0.261799 1.8675" />
+    <position class="hand_joint" name="act_orcahand_right_T-TP-R_1c2b802d_to_R-Carpals_8d1f1041" joint="orcahand_right_T-TP-R_1c2b802d_to_R-Carpals_8d1f1041" ctrlrange="-0.785398 0.575959" />
+    <position class="hand_joint" name="act_orcahand_right_R-T-AP_a9723101_to_T-TP-R_1c2b802d" joint="orcahand_right_R-T-AP_a9723101_to_T-TP-R_1c2b802d" ctrlrange="-0.314159 0.959931" />
+    <position class="hand_joint" name="act_orcahand_right_T-PP_68395e98_to_R-T-AP_a9723101" joint="orcahand_right_T-PP_68395e98_to_R-T-AP_a9723101" ctrlrange="-0.436332 1.74533" />
+    <position class="hand_joint" name="act_orcahand_right_T-DP_b7429e50_to_T-PP_68395e98" joint="orcahand_right_T-DP_b7429e50_to_T-PP_68395e98" ctrlrange="-0.261799 1.8675" />
   </actuator>
 </mujoco>

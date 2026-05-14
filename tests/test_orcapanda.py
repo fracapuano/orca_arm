@@ -83,9 +83,32 @@ def test_orcapanda_mjcf_loads_and_steps():
     assert model.nq == 24
     assert model.nu == 24
 
+    qpos0_violations = []
+    for joint_id in range(model.njnt):
+        if not model.jnt_limited[joint_id]:
+            continue
+        qpos_addr = model.jnt_qposadr[joint_id]
+        qpos0 = model.qpos0[qpos_addr]
+        lower, upper = model.jnt_range[joint_id]
+        if qpos0 < lower or qpos0 > upper:
+            qpos0_violations.append((model.joint(joint_id).name, qpos0, lower, upper))
+    assert qpos0_violations == []
+
+    for actuator_id in range(model.nu):
+        joint_id = model.actuator_trnid[actuator_id, 0]
+        assert np.allclose(
+            model.actuator_ctrlrange[actuator_id],
+            model.jnt_range[joint_id],
+        )
+
     body_names = {model.body(i).name for i in range(model.nbody)}
     assert "panda_link8" in body_names
     assert any("orcahand_right" in name for name in body_names)
+
+    for actuator_id in range(model.nu):
+        joint_id = model.actuator_trnid[actuator_id, 0]
+        qpos_addr = model.jnt_qposadr[joint_id]
+        data.ctrl[actuator_id] = model.qpos0[qpos_addr]
 
     for _ in range(200):
         mujoco.mj_step(model, data)
