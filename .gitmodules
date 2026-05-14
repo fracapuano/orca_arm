@@ -4,3 +4,7 @@
 [submodule "openarm_description_repo"]
 	path = openarm_description_repo
 	url = https://github.com/enactic/openarm_description
+[submodule "franka_ros_repo"]
+	path = franka_ros_repo
+	url = https://github.com/frankaemika/franka_ros.git
+	branch = noetic-devel

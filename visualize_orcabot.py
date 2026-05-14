@@ -1,5 +1,5 @@
 
-"""Visualize the orcabot URDF in meshcat with a live wrist-triad readout."""
+"""Visualize a bundled Orca URDF in meshcat with a live wrist-triad readout."""
 import argparse
 import yourdfpy
 import meshcat
@@ -10,6 +10,12 @@ import orca_arm
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument(
+    "--embodiment",
+    choices=("orcabot", "orcapanda"),
+    default="orcabot",
+    help="Which bundled robot description to visualize.",
+)
+parser.add_argument(
     "--idle",
     action="store_true",
     help="Skip the random joint sweep; show the robot at its home configuration "
@@ -17,7 +23,10 @@ parser.add_argument(
 )
 args = parser.parse_args()
 
-urdf_path = orca_arm.URDF_PATH
+urdf_path = {
+    "orcabot": orca_arm.URDF_PATH,
+    "orcapanda": orca_arm.ORCAPANDA_URDF_PATH,
+}[args.embodiment]
 print(f"Loading URDF: {urdf_path}")
 
 robot = yourdfpy.URDF.load(urdf_path)
