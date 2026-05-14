@@ -114,3 +114,13 @@ def test_orcapanda_mjcf_loads_and_steps():
         mujoco.mj_step(model, data)
     assert np.all(np.isfinite(data.qpos))
     assert np.all(np.isfinite(data.qvel))
+
+
+def test_orcapanda_mjcf_uses_menagerie_panda_meshes():
+    root = ET.parse(orca_arm.ORCAPANDA_MJCF_PATH).getroot()
+    mesh_files = {mesh.get("file", "") for mesh in root.findall("./asset/mesh")}
+    body_names = {body.get("name", "") for body in root.iter("body")}
+
+    assert "assets/franka_emika_panda/link0_0.obj" in mesh_files
+    assert "assets/franka_emika_panda/link7_7.obj" in mesh_files
+    assert not any(name.startswith("panda_link") and name.endswith("_sc") for name in body_names)

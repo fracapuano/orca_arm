@@ -113,10 +113,12 @@ The generated model has 24 actuated joints: 7 Panda arm joints and 17 OrcaHand
 joints. The intent is to demonstrate how OrcaHand can be packaged with an
 external robot arm for downstream applications.
 
-The Panda source description comes from `franka_ros_repo/franka_description`
+The Panda URDF source description comes from `franka_ros_repo/franka_description`
 on the upstream `franka_ros` `noetic-devel` branch, currently pinned by the
-submodule at commit `35e1f654426e04bc9f83b73af4ab68a3fb145c84`. See
-`orca_arm/THIRD_PARTY_NOTICES.md` for bundled asset attribution.
+submodule at commit `35e1f654426e04bc9f83b73af4ab68a3fb145c84`. The OrcaPanda
+MJCF uses the MuJoCo Menagerie Panda no-hand model for the arm and attaches the
+same OrcaHand subtree used by the URDF. See `orca_arm/THIRD_PARTY_NOTICES.md`
+for bundled asset attribution.
 
 ## Layout
 
@@ -126,7 +128,7 @@ submodule at commit `35e1f654426e04bc9f83b73af4ab68a3fb145c84`. See
 | `orca_arm/orcabot.xml` | MuJoCo MJCF, generated from the URDF |
 | `orca_arm/orcapanda.urdf` | Mono Panda + OrcaHand robot description |
 | `orca_arm/orcapanda.xml` | MuJoCo MJCF for the Panda + OrcaHand embodiment |
-| `orca_arm/assets/` | Bundled mesh files (`.stl`, `.dae`) |
+| `orca_arm/assets/` | Bundled mesh files (`.stl`, `.dae`, `.obj`) |
 | `visualize_orcabot.py` | Meshcat viewer (live FK, or optionally `--idle`) |
 | `build_orcabot_urdf.py` | Regenerates the URDF from the OpenArm + OrcaHand source descriptions |
 | `build_orcabot_mjcf.py` | Regenerates the MJCF from the URDF |

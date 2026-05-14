@@ -1,5 +1,5 @@
 <mujoco model="orcapanda">
-  <compiler angle="radian" meshdir="." autolimits="true" />
+  <compiler angle="radian" meshdir="/Users/fracapuano/Documents/orca_arm/orca_arm" autolimits="true" />
   <option integrator="implicitfast" impratio="10" />
   <default>
     <default class="panda">
@@ -103,7 +103,7 @@
     <mesh name="right_R-T-AP" content_type="model/stl" file="assets/right_R-T-AP.stl" scale="0.001 0.001 0.001" />
     <mesh name="right_T-PP" content_type="model/stl" file="assets/right_T-PP.stl" scale="0.001 0.001 0.001" />
     <mesh name="right_T-DP" content_type="model/stl" file="assets/right_T-DP.stl" scale="0.001 0.001 0.001" />
-  </asset>
+  <texture name="skybox_preview" type="skybox" builtin="gradient" rgb1="0.88 0.92 0.96" rgb2="0.98 0.99 1.0" width="512" height="512" /><texture name="checker_preview" type="2d" builtin="checker" rgb1="0.78 0.80 0.82" rgb2="0.53 0.57 0.60" width="512" height="512" /><material name="mat_preview_floor" texture="checker_preview" texrepeat="7 7" rgba="0.85 0.86 0.86 1" /></asset>
   <worldbody>
     <light name="top" pos="0 0 2" mode="trackcom" />
     <body name="panda_link0" childclass="panda">
@@ -311,7 +311,7 @@
         </body>
       </body>
     </body>
-  </worldbody>
+  <geom name="preview_floor" type="plane" size="2.2 2.2 0.05" material="mat_preview_floor" pos="0 0 -0.01" /><light name="preview_key" pos="0.5 -1.2 2.2" dir="-0.2 0.7 -1.0" directional="true" /></worldbody>
   <actuator>
     <general class="panda" name="act_panda_joint1" joint="panda_joint1" gainprm="4500" biasprm="0 -4500 -450" />
     <general class="panda" name="act_panda_joint2" joint="panda_joint2" gainprm="4500" biasprm="0 -4500 -450" ctrlrange="-1.7628 1.7628" />
@@ -344,4 +344,4 @@
   <keyframe>
     <key name="home" qpos="0 0 0 -1.57079 0 1.57079 -0.7853 0 0 0 0 0 0 0 0 0 0 0 0 0" ctrl="0 0 0 -1.57079 0 1.57079 -0.7853 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0" />
   </keyframe>
-</mujoco>
+<visual><global offwidth="1280" offheight="720" /><headlight ambient="0.4 0.4 0.4" diffuse="0.6 0.6 0.6" specular="0.2 0.2 0.2" /></visual></mujoco>

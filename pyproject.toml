@@ -30,6 +30,8 @@ orca_arm = [
     "orcapanda.xml",
     "assets/*.stl",
     "assets/*.dae",
+    "assets/*.obj",
     "assets/*.STL",
     "assets/*.DAE",
+    "assets/franka_emika_panda/*",
 ]
