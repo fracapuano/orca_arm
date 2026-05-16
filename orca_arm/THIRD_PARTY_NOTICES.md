@@ -46,7 +46,7 @@ in that directory for upstream terms and generation notes.
 - Source: `https://github.com/orcahand/orcahand_description`
 - License: MIT License
 
-The OrcaHand URDF and meshes are bundled into the generated OrcaBot and
+The OrcaHand URDF and meshes are bundled into the generated OrcaArm and
 OrcaPanda descriptions with side-specific link, joint, and mesh prefixes.
 
 ## OpenArm
@@ -54,4 +54,4 @@ OrcaPanda descriptions with side-specific link, joint, and mesh prefixes.
 - Source: `https://github.com/enactic/openarm_description`
 - License: Apache License 2.0
 
-OpenArm source descriptions and meshes are used for the OrcaBot embodiment.
+OpenArm source descriptions and meshes are used for the OrcaArm embodiment.

@@ -18,6 +18,8 @@ URDF_PATH = str(_PACKAGE_DIR / "orcabot.urdf")
 MJCF_PATH = str(_PACKAGE_DIR / "orcabot.xml")
 ORCAPANDA_URDF_PATH = str(_PACKAGE_DIR / "orcapanda.urdf")
 ORCAPANDA_MJCF_PATH = str(_PACKAGE_DIR / "orcapanda.xml")
+BIMANUAL_ORCAPANDA_URDF_PATH = str(_PACKAGE_DIR / "bimanual_orcapanda.urdf")
+BIMANUAL_ORCAPANDA_MJCF_PATH = str(_PACKAGE_DIR / "bimanual_orcapanda.xml")
 ASSETS_DIR = str(_PACKAGE_DIR / "assets")
 
 __all__ = [
@@ -25,5 +27,7 @@ __all__ = [
     "MJCF_PATH",
     "ORCAPANDA_URDF_PATH",
     "ORCAPANDA_MJCF_PATH",
+    "BIMANUAL_ORCAPANDA_URDF_PATH",
+    "BIMANUAL_ORCAPANDA_MJCF_PATH",
     "ASSETS_DIR",
 ]
