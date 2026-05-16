@@ -69,6 +69,7 @@ data = mujoco.MjData(model)
 This is the entry point for any MuJoCo-based stack consuming MJCF.
 Use `orca_arm.ORCAPANDA_MJCF_PATH` for the Panda reference integration.
 Use `orca_arm.BIMANUAL_ORCAPANDA_MJCF_PATH` for the two-Panda variant.
+Compose your own MJCF world (floor, lighting, etc.) around these models in your project; the bundled files describe the arms, not full scenes.
 
 On macOS, prefer the local passive viewer launcher over
 `python -m mujoco.viewer`:
@@ -147,16 +148,22 @@ Downstream users do not need to regenerate anything — the bundled URDF/MJCF
 files are the artifacts you consume. The `build_*.py` scripts only matter if
 you are updating the inputs.
 
-To regenerate, you need both submodules and the build-time dependencies:
+To regenerate, you need both submodules and the build-time dependencies.
+Each embodiment is rebuilt **URDF then MJCF** in one step so the pair never
+drifts (use `make`, or the same two commands chained with `&&`).
 
 ```bash
 git submodule update --init --recursive
 pip install -e .[build]
 
-python build_orcapanda_urdf.py   # rebuild orca_arm/orcapanda.urdf
-python build_orcapanda_mjcf.py   # rebuild orca_arm/orcapanda.xml
-python build_bimanual_orcapanda_urdf.py
-python build_bimanual_orcapanda_mjcf.py
+make regenerate-orcapanda
+make regenerate-bimanual-orcapanda
+make regenerate-orcabot
+make regenerate-all-descriptions
+
+python build_orcapanda_urdf.py && python build_orcapanda_mjcf.py
+python build_bimanual_orcapanda_urdf.py && python build_bimanual_orcapanda_mjcf.py
+python build_orcabot_urdf.py && python build_orcabot_mjcf.py
 ```
 
 The OrcaArm builders (`build_orcabot_*.py`) only need the `orcahand_repo` and
@@ -176,15 +183,13 @@ extra).
 | `orca_arm/bimanual_orcapanda.xml` | MuJoCo MJCF for BimanualOrcaPanda |
 | `orca_arm/assets/` | Bundled mesh files (`.stl`, `.dae`, `.obj`) |
 | `visualize_orcabot.py` | Meshcat viewer (live FK, or optionally `--idle`) |
-| `build_orcabot_urdf.py` | Regenerates the URDF from the OpenArm + OrcaHand source descriptions |
-| `build_orcabot_mjcf.py` | Regenerates the MJCF from the URDF |
-| `build_orcapanda_urdf.py` | Regenerates the Panda + OrcaHand URDF |
-| `build_orcapanda_mjcf.py` | Regenerates the Panda + OrcaHand MJCF |
-| `build_bimanual_orcapanda_urdf.py` | Regenerates the BimanualOrcaPanda URDF |
-| `build_bimanual_orcapanda_mjcf.py` | Regenerates the BimanualOrcaPanda MJCF |
+| `build_orcabot_urdf.py` / `build_orcabot_mjcf.py` | Regenerate OrcaArm URDF then MJCF (always run both, in that order) |
+| `build_orcapanda_urdf.py` / `build_orcapanda_mjcf.py` | Regenerate OrcaPanda URDF then MJCF (always run both, in that order) |
+| `build_bimanual_orcapanda_urdf.py` / `build_bimanual_orcapanda_mjcf.py` | Regenerate BimanualOrcaPanda URDF then MJCF (always run both, in that order) |
 | `tests/` | Checks every referenced mesh resolves and FK is well-defined |
 
 
 We are also releasing `build_*.py` scripts to regenerate the URDF and MJCF from
-the OpenArm, Franka Panda, and OrcaHand source descriptions.
-These are only relevant if you are updating the assets themselves; ordinary downstream use does not require running them!
+the OpenArm, Franka Panda, and OrcaHand source descriptions. For each robot,
+run the **URDF script and then the MJCF script** (or the matching `make regenerate-*` target) so the pair stays consistent.
+These are only relevant if you are updating the assets themselves; ordinary downstream use does not require running them.
