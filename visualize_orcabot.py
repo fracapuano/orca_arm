@@ -11,8 +11,8 @@ import orca_arm
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument(
     "--embodiment",
-    choices=("orcabot", "orcapanda"),
-    default="orcabot",
+    choices=("orcaarm", "orcapanda", "bimanual_orcapanda"),
+    default="orcaarm",
     help="Which bundled robot description to visualize.",
 )
 parser.add_argument(
@@ -24,8 +24,9 @@ parser.add_argument(
 args = parser.parse_args()
 
 urdf_path = {
-    "orcabot": orca_arm.URDF_PATH,
+    "orcaarm": orca_arm.URDF_PATH,
     "orcapanda": orca_arm.ORCAPANDA_URDF_PATH,
+    "bimanual_orcapanda": orca_arm.BIMANUAL_ORCAPANDA_URDF_PATH,
 }[args.embodiment]
 print(f"Loading URDF: {urdf_path}")
 
