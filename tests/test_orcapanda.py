@@ -116,6 +116,15 @@ def test_orcapanda_mjcf_loads_and_steps():
     assert np.all(np.isfinite(data.qvel))
 
 
+def test_orcapanda_mjcf_home_keyframe_matches_qpos0():
+    import mujoco
+
+    model = mujoco.MjModel.from_xml_path(orca_arm.ORCAPANDA_MJCF_PATH)
+    assert model.nkey >= 1
+    for key_id in range(model.nkey):
+        assert np.allclose(model.key_qpos[key_id], model.qpos0)
+
+
 def test_orcapanda_mjcf_uses_menagerie_panda_meshes():
     root = ET.parse(orca_arm.ORCAPANDA_MJCF_PATH).getroot()
     mesh_files = {mesh.get("file", "") for mesh in root.findall("./asset/mesh")}
