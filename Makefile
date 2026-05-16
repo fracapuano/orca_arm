@@ -1,14 +1,20 @@
-# ROS 2 URDF description package export for the orca_arm bimanual robot.
+# orca_arm — ROS 2 export + description regeneration
 #
-#   build/orca_arm_description/
-#   ├── package.xml
-#   ├── urdf/orca_arm.urdf      (mesh URIs rewritten to package://)
-#   └── meshes/*.stl *.dae
-#
-# Usage:
+# ROS 2 URDF package export (OrcaArm only):
 #   make urdf-export                          # build/orca_arm_description/
 #   make urdf-export EXPORT_DIR=/tmp/orca     # custom location
 #   make clean-urdf-export
+#
+# Regenerate bundled URDF/MJCF together (URDF first, then MJCF; requires
+# submodules + build deps; see README):
+#   make regenerate-orcabot                   # OpenArm + OrcaHand
+#   make regenerate-orcapanda               # Panda + OrcaHand
+#   make regenerate-bimanual-orcapanda      # dual Panda + hands
+#   make regenerate-all-descriptions        # all of the above
+#
+#   PYTHON=python3 make regenerate-orcapanda   # override interpreter
+
+PYTHON ?= python3
 
 EXPORT_DIR ?= build/orca_arm_description
 PKG_NAME   := orca_arm_description
@@ -16,7 +22,9 @@ PKG_NAME   := orca_arm_description
 URDF_SRC   := orca_arm/orcabot.urdf
 ASSETS_SRC := orca_arm/assets
 
-.PHONY: urdf-export clean-urdf-export
+.PHONY: urdf-export clean-urdf-export \
+	regenerate-orcabot regenerate-orcapanda regenerate-bimanual-orcapanda \
+	regenerate-all-descriptions
 
 urdf-export:
 	@test -f "$(URDF_SRC)" || { echo "Missing $(URDF_SRC)"; exit 1; }
@@ -45,3 +53,17 @@ urdf-export:
 
 clean-urdf-export:
 	rm -rf "$(EXPORT_DIR)"
+
+regenerate-orcabot:
+	$(PYTHON) build_orcabot_urdf.py
+	$(PYTHON) build_orcabot_mjcf.py
+
+regenerate-orcapanda:
+	$(PYTHON) build_orcapanda_urdf.py
+	$(PYTHON) build_orcapanda_mjcf.py
+
+regenerate-bimanual-orcapanda:
+	$(PYTHON) build_bimanual_orcapanda_urdf.py
+	$(PYTHON) build_bimanual_orcapanda_mjcf.py
+
+regenerate-all-descriptions: regenerate-orcabot regenerate-orcapanda regenerate-bimanual-orcapanda
