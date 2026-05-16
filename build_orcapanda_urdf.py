@@ -25,9 +25,7 @@ PACKAGE_DIR = os.path.join(BASE_DIR, "orca_arm")
 ASSETS_DIR = os.path.join(PACKAGE_DIR, "assets")
 OUTPUT_URDF = os.path.join(PACKAGE_DIR, "orcapanda.urdf")
 
-
-fake_ament = types.ModuleType("ament_index_python")
-fake_ament_packages = types.ModuleType("ament_index_python.packages")
+ORCAHAND_PREFIX = "orcahand_right_"
 
 PACKAGE_MAP = {
     "franka_description": FRANKA_DESC,
@@ -45,18 +43,15 @@ def get_package_prefix(pkg_name):
     return get_package_share_directory(pkg_name)
 
 
-fake_ament.get_package_share_directory = get_package_share_directory
-fake_ament.get_package_prefix = get_package_prefix
-fake_ament_packages.get_package_share_directory = get_package_share_directory
-fake_ament_packages.get_package_prefix = get_package_prefix
-
-sys.modules["ament_index_python"] = fake_ament
-sys.modules["ament_index_python.packages"] = fake_ament_packages
-
-import xacro
-
-
-os.makedirs(ASSETS_DIR, exist_ok=True)
+def install_fake_ament():
+    fake_ament = types.ModuleType("ament_index_python")
+    fake_ament_packages = types.ModuleType("ament_index_python.packages")
+    fake_ament.get_package_share_directory = get_package_share_directory
+    fake_ament.get_package_prefix = get_package_prefix
+    fake_ament_packages.get_package_share_directory = get_package_share_directory
+    fake_ament_packages.get_package_prefix = get_package_prefix
+    sys.modules["ament_index_python"] = fake_ament
+    sys.modules["ament_index_python.packages"] = fake_ament_packages
 
 
 def stage_mesh(src_abs_path, name_hint=None):
@@ -113,106 +108,8 @@ def add_world_root(root):
     root.insert(1, joint)
 
 
-def prefix_name(name, prefix="orcahand_right_"):
-    return prefix + name
-
-
-print("[1/5] Processing Franka Panda xacro...")
-try:
-    doc = xacro.process_file(
-        FRANKA_XACRO,
-        mappings={
-            "arm_id": "panda",
-            "hand": "false",
-            "gazebo": "false",
-        },
-    )
-    panda_xml_str = doc.toprettyxml(indent="  ")
-    print("  Panda xacro processed successfully.")
-except Exception as exc:
-    print(f"  Error processing Panda xacro: {exc}")
-    sys.exit(1)
-
-panda_tree = ET.ElementTree(ET.fromstring(panda_xml_str))
-panda_root = panda_tree.getroot()
-add_world_root(panda_root)
-
-mat_elem = ET.SubElement(panda_root, "material")
-mat_elem.set("name", "orcahand_white")
-color_elem = ET.SubElement(mat_elem, "color")
-color_elem.set("rgba", "1 1 1 1")
-
-print("[2/5] Parsing OrcaHand v2 right hand URDF...")
-orca_tree = ET.parse(ORCAHAND_URDF_RIGHT)
-orca_root = orca_tree.getroot()
-orca_links = orca_root.findall("link")
-orca_joints = orca_root.findall("joint")
-print(f"  Found {len(orca_links)} links, {len(orca_joints)} joints.")
-
-print("[3/5] Adding right OrcaHand links and joints...")
-for link in orca_links:
-    new_link = copy.deepcopy(link)
-    new_link.set("name", prefix_name(new_link.get("name")))
-
-    for mesh in new_link.iter("mesh"):
-        stage_orcahand_mesh(mesh)
-    for material in new_link.iter("material"):
-        if material.get("name") == "white":
-            material.set("name", "orcahand_white")
-
-    for visual in new_link.findall("visual"):
-        collision = copy.deepcopy(visual)
-        collision.tag = "collision"
-        for material in collision.findall("material"):
-            collision.remove(material)
-        new_link.append(collision)
-
-    panda_root.append(new_link)
-
-for joint in orca_joints:
-    new_joint = copy.deepcopy(joint)
-    new_joint.set("name", prefix_name(new_joint.get("name")))
-
-    parent = new_joint.find("parent")
-    if parent is not None:
-        parent.set("link", prefix_name(parent.get("link")))
-    child = new_joint.find("child")
-    if child is not None:
-        child.set("link", prefix_name(child.get("link")))
-
-    panda_root.append(new_joint)
-
-print("[4/5] Mounting OrcaHand to panda_link8 and staging Panda meshes...")
-connect_joint = ET.SubElement(panda_root, "joint")
-connect_joint.set("name", "panda_link8_to_orcahand_joint")
-connect_joint.set("type", "fixed")
-ET.SubElement(connect_joint, "parent", {"link": "panda_link8"})
-ET.SubElement(
-    connect_joint,
-    "child",
-    {"link": prefix_name("ForeArmStructure-Model_e18f2368")},
-)
-ET.SubElement(
-    connect_joint,
-    "origin",
-    {
-        "xyz": "0 0 0.0575",
-        "rpy": f"{math.pi / 2} 0 {math.pi}",
-    },
-)
-
-for mesh in panda_root.iter("mesh"):
-    stage_franka_mesh(mesh)
-
-print("[5/5] Writing combined URDF...")
-panda_root.set("name", "orcapanda")
-ET.indent(panda_tree, space="  ")
-panda_tree.write(OUTPUT_URDF, xml_declaration=True, encoding="unicode")
-print(f"  Written to: {OUTPUT_URDF}")
-
-print("\n=== Validation ===")
-try:
-    val_root = ET.parse(OUTPUT_URDF).getroot()
+def validate_urdf_tree(path):
+    val_root = ET.parse(path).getroot()
     links = val_root.findall("link")
     joints = val_root.findall("joint")
     all_links = {link.get("name") for link in links}
@@ -242,8 +139,116 @@ try:
     if root_links != {"world"}:
         raise RuntimeError(f"Expected only world as root, got {root_links}")
     print("  SUCCESS: Combined Panda-Orca URDF is a valid tree.")
-except Exception as exc:
-    print(f"  Validation error: {exc}")
-    sys.exit(1)
 
-print(f"\nDone! Output: {OUTPUT_URDF}")
+
+def main():
+    install_fake_ament()
+    import xacro
+
+    os.makedirs(ASSETS_DIR, exist_ok=True)
+
+    print("[1/5] Processing Franka Panda xacro...")
+    try:
+        doc = xacro.process_file(
+            FRANKA_XACRO,
+            mappings={
+                "arm_id": "panda",
+                "hand": "false",
+                "gazebo": "false",
+            },
+        )
+        panda_xml_str = doc.toprettyxml(indent="  ")
+        print("  Panda xacro processed successfully.")
+    except Exception as exc:
+        print(f"  Error processing Panda xacro: {exc}")
+        sys.exit(1)
+
+    panda_tree = ET.ElementTree(ET.fromstring(panda_xml_str))
+    panda_root = panda_tree.getroot()
+    add_world_root(panda_root)
+
+    mat_elem = ET.SubElement(panda_root, "material")
+    mat_elem.set("name", "orcahand_white")
+    color_elem = ET.SubElement(mat_elem, "color")
+    color_elem.set("rgba", "1 1 1 1")
+
+    print("[2/5] Parsing OrcaHand v2 right hand URDF...")
+    orca_tree = ET.parse(ORCAHAND_URDF_RIGHT)
+    orca_root = orca_tree.getroot()
+    orca_links = orca_root.findall("link")
+    orca_joints = orca_root.findall("joint")
+    print(f"  Found {len(orca_links)} links, {len(orca_joints)} joints.")
+
+    print("[3/5] Adding right OrcaHand links and joints...")
+    for link in orca_links:
+        new_link = copy.deepcopy(link)
+        new_link.set("name", f"{ORCAHAND_PREFIX}{new_link.get('name')}")
+
+        for mesh in new_link.iter("mesh"):
+            stage_orcahand_mesh(mesh)
+        for material in new_link.iter("material"):
+            if material.get("name") == "white":
+                material.set("name", "orcahand_white")
+
+        for visual in new_link.findall("visual"):
+            collision = copy.deepcopy(visual)
+            collision.tag = "collision"
+            for material in collision.findall("material"):
+                collision.remove(material)
+            new_link.append(collision)
+
+        panda_root.append(new_link)
+
+    for joint in orca_joints:
+        new_joint = copy.deepcopy(joint)
+        new_joint.set("name", f"{ORCAHAND_PREFIX}{new_joint.get('name')}")
+
+        parent = new_joint.find("parent")
+        if parent is not None:
+            parent.set("link", f"{ORCAHAND_PREFIX}{parent.get('link')}")
+        child = new_joint.find("child")
+        if child is not None:
+            child.set("link", f"{ORCAHAND_PREFIX}{child.get('link')}")
+
+        panda_root.append(new_joint)
+
+    print("[4/5] Mounting OrcaHand to panda_link8 and staging Panda meshes...")
+    connect_joint = ET.SubElement(panda_root, "joint")
+    connect_joint.set("name", "panda_link8_to_orcahand_joint")
+    connect_joint.set("type", "fixed")
+    ET.SubElement(connect_joint, "parent", {"link": "panda_link8"})
+    ET.SubElement(
+        connect_joint,
+        "child",
+        {"link": f"{ORCAHAND_PREFIX}ForeArmStructure-Model_e18f2368"},
+    )
+    ET.SubElement(
+        connect_joint,
+        "origin",
+        {
+            "xyz": "0 0 0.0575",
+            "rpy": f"{math.pi / 2} 0 {math.pi}",
+        },
+    )
+
+    for mesh in panda_root.iter("mesh"):
+        stage_franka_mesh(mesh)
+
+    print("[5/5] Writing combined URDF...")
+    panda_root.set("name", "orcapanda")
+    ET.indent(panda_tree, space="  ")
+    panda_tree.write(OUTPUT_URDF, xml_declaration=True, encoding="unicode")
+    print(f"  Written to: {OUTPUT_URDF}")
+
+    print("\n=== Validation ===")
+    try:
+        validate_urdf_tree(OUTPUT_URDF)
+    except Exception as exc:
+        print(f"  Validation error: {exc}")
+        sys.exit(1)
+
+    print(f"\nDone! Output: {OUTPUT_URDF}")
+
+
+if __name__ == "__main__":
+    main()

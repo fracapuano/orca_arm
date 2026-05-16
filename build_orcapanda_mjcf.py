@@ -205,6 +205,22 @@ def joint_ranges(root: ET.Element) -> dict[str, tuple[float, float]]:
     return ranges
 
 
+def joints_in_tree_order(root: ET.Element) -> list[ET.Element]:
+    """Named joints in MuJoCo qpos order (depth-first walk of <worldbody>)."""
+    worldbody = root.find("worldbody")
+    if worldbody is None:
+        return []
+    return [joint for joint in worldbody.iter("joint") if joint.get("name")]
+
+
+def joint_home(joint: ET.Element) -> float:
+    """Resolved home value: `ref` if set by set_home_refs, else 0."""
+    ref = joint.get("ref")
+    if ref is not None:
+        return float(ref)
+    return 0.0
+
+
 def patch_actuator_ctrlranges(root: ET.Element) -> None:
     ranges = joint_ranges(root)
     actuator = root.find("actuator")
@@ -235,15 +251,17 @@ def patch_actuator_ctrlranges(root: ET.Element) -> None:
 
 
 def patch_keyframes(root: ET.Element) -> None:
-    ranges = joint_ranges(root)
-    qpos_length = len(ranges)
-    actuator_count = len(root.findall("./actuator/*"))
+    """Rewrite every keyframe to the home pose so qpos/ctrl match qpos0 after set_home_refs."""
+    joints = joints_in_tree_order(root)
+    homes_by_name = {joint.get("name"): joint_home(joint) for joint in joints}
+    qpos_values = [homes_by_name[joint.get("name")] for joint in joints]
+    ctrl_values = [
+        homes_by_name.get(actuator.get("joint"), 0.0)
+        for actuator in root.findall("./actuator/*")
+    ]
     for key in root.findall("./keyframe/key"):
-        for attr, length in (("qpos", qpos_length), ("ctrl", actuator_count)):
-            values = key.get(attr, "").split()
-            if len(values) < length:
-                values.extend(["0"] * (length - len(values)))
-            key.set(attr, " ".join(values[:length]))
+        key.set("qpos", " ".join(format_float(v) for v in qpos_values))
+        key.set("ctrl", " ".join(format_float(v) for v in ctrl_values))
 
 
 def set_home_refs(root: ET.Element) -> None:
@@ -276,6 +294,12 @@ def verify_model(path: Path) -> None:
 
     assert np.isfinite(data.qpos).all(), "qpos went non-finite during step test"
     assert np.isfinite(data.qvel).all(), "qvel went non-finite during step test"
+
+    for key_id in range(model.nkey):
+        key_qpos = model.key_qpos[key_id]
+        assert np.allclose(key_qpos, model.qpos0), (
+            f"keyframe {model.keyframe(key_id).name!r} qpos diverges from qpos0"
+        )
 
     body_names = {model.body(i).name for i in range(model.nbody)}
     assert "panda_link8" in body_names
