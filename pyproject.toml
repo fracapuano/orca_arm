@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "orca_arm"
-version = "0.0.0"
-description = "Orca robot descriptions with bundled URDF/MJCF assets, including OrcaBot and the Franka Panda + OrcaHand embodiment."
+version = "0.1.0"
+description = "Orca robot descriptions with bundled URDF/MJCF assets, including single arm and bimanual setups.
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [{ name = "Francesco Capuano" , email = "capuano@robots.ox.ac.uk"}]
@@ -20,6 +20,12 @@ viz = [
     "yourdfpy",
     "mujoco"
 ]
+build = [
+    "mujoco",
+    "numpy",
+    "trimesh",
+    "xacro",
+]
 
 [tool.setuptools.package-data]
 orca_arm = [
@@ -28,6 +34,8 @@ orca_arm = [
     "orcabot.xml",
     "orcapanda.urdf",
     "orcapanda.xml",
+    "bimanual_orcapanda.urdf",
+    "bimanual_orcapanda.xml",
     "assets/*.stl",
     "assets/*.dae",
     "assets/*.obj",
