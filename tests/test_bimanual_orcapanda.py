@@ -1,0 +1,143 @@
+"""Tests for the bimanual Panda + OrcaHand embodiment."""
+
+import os
+import xml.etree.ElementTree as ET
+
+import numpy as np
+
+import orca_arm
+
+
+def _mesh_path(filename):
+    if filename.startswith("assets/"):
+        return os.path.join(os.path.dirname(orca_arm.BIMANUAL_ORCAPANDA_URDF_PATH), filename)
+    return filename
+
+
+def _filename_handler(fname):
+    return _mesh_path(fname)
+
+
+def test_bimanual_orcapanda_files_exist():
+    assert os.path.isfile(orca_arm.BIMANUAL_ORCAPANDA_URDF_PATH)
+    assert os.path.isfile(orca_arm.BIMANUAL_ORCAPANDA_MJCF_PATH)
+
+
+def test_bimanual_orcapanda_urdf_tree_and_mounts():
+    root = ET.parse(orca_arm.BIMANUAL_ORCAPANDA_URDF_PATH).getroot()
+    links = root.findall("link")
+    joints = root.findall("joint")
+
+    assert root.get("name") == "bimanual_orcapanda"
+
+    all_links = {link.get("name") for link in links}
+    child_links = {
+        joint.find("child").get("link")
+        for joint in joints
+        if joint.find("child") is not None
+    }
+    assert all_links - child_links == {"world"}
+
+    for side in ("left", "right"):
+        panda_prefix = f"{side}_panda"
+        hand_prefix = f"orcahand_{side}_"
+        base = root.find(f"./joint[@name='world_to_{panda_prefix}_joint']")
+        mount = root.find(f"./joint[@name='{panda_prefix}_link8_to_orcahand_joint']")
+
+        assert base is not None
+        assert base.get("type") == "fixed"
+        assert base.find("parent").get("link") == "world"
+        assert base.find("child").get("link") == f"{panda_prefix}_link0"
+
+        assert mount is not None
+        assert mount.get("type") == "fixed"
+        assert mount.find("parent").get("link") == f"{panda_prefix}_link8"
+        assert mount.find("child").get("link") == f"{hand_prefix}ForeArmStructure-Model_e18f2368"
+        assert mount.find("origin").get("xyz") == "0 0 0.0575"
+
+    dynamic_joints = [joint for joint in joints if joint.get("type") != "fixed"]
+    dynamic_joint_names = {joint.get("name") for joint in dynamic_joints}
+    assert len(dynamic_joints) == 48
+    for side in ("left", "right"):
+        assert {f"{side}_panda_joint{i}" for i in range(1, 8)} <= dynamic_joint_names
+        assert any(name.startswith(f"orcahand_{side}_") for name in dynamic_joint_names)
+
+
+def test_bimanual_orcapanda_urdf_meshes_resolve():
+    root = ET.parse(orca_arm.BIMANUAL_ORCAPANDA_URDF_PATH).getroot()
+    missing = [
+        mesh.get("filename")
+        for mesh in root.iter("mesh")
+        if not os.path.isfile(_mesh_path(mesh.get("filename", "")))
+    ]
+    assert missing == []
+
+
+def test_bimanual_orcapanda_loads_with_yourdfpy():
+    import yourdfpy
+
+    robot = yourdfpy.URDF.load(
+        orca_arm.BIMANUAL_ORCAPANDA_URDF_PATH,
+        filename_handler=_filename_handler,
+    )
+    assert robot.robot.name == "bimanual_orcapanda"
+    assert len(robot.actuated_joint_names) == 48
+
+
+def test_bimanual_orcapanda_mjcf_loads_and_steps():
+    import mujoco
+
+    model = mujoco.MjModel.from_xml_path(orca_arm.BIMANUAL_ORCAPANDA_MJCF_PATH)
+    data = mujoco.MjData(model)
+
+    assert model.nq == 48
+    assert model.nu == 48
+
+    qpos0_violations = []
+    for joint_id in range(model.njnt):
+        if not model.jnt_limited[joint_id]:
+            continue
+        qpos_addr = model.jnt_qposadr[joint_id]
+        qpos0 = model.qpos0[qpos_addr]
+        lower, upper = model.jnt_range[joint_id]
+        if qpos0 < lower or qpos0 > upper:
+            qpos0_violations.append((model.joint(joint_id).name, qpos0, lower, upper))
+    assert qpos0_violations == []
+
+    for actuator_id in range(model.nu):
+        joint_id = model.actuator_trnid[actuator_id, 0]
+        assert np.allclose(
+            model.actuator_ctrlrange[actuator_id],
+            model.jnt_range[joint_id],
+        )
+        qpos_addr = model.jnt_qposadr[joint_id]
+        data.ctrl[actuator_id] = model.qpos0[qpos_addr]
+
+    body_names = {model.body(i).name for i in range(model.nbody)}
+    for side in ("left", "right"):
+        assert f"{side}_panda_link8" in body_names
+        assert any(f"orcahand_{side}_" in name for name in body_names)
+
+    for _ in range(200):
+        mujoco.mj_step(model, data)
+    assert np.all(np.isfinite(data.qpos))
+    assert np.all(np.isfinite(data.qvel))
+
+
+def test_bimanual_orcapanda_mjcf_home_keyframe_matches_qpos0():
+    import mujoco
+
+    model = mujoco.MjModel.from_xml_path(orca_arm.BIMANUAL_ORCAPANDA_MJCF_PATH)
+    assert model.nkey >= 1
+    for key_id in range(model.nkey):
+        assert np.allclose(model.key_qpos[key_id], model.qpos0)
+
+
+def test_bimanual_orcapanda_mjcf_uses_menagerie_panda_meshes():
+    root = ET.parse(orca_arm.BIMANUAL_ORCAPANDA_MJCF_PATH).getroot()
+    mesh_files = {mesh.get("file", "") for mesh in root.findall("./asset/mesh")}
+    body_names = {body.get("name", "") for body in root.iter("body")}
+
+    assert "assets/franka_emika_panda/link0_0.obj" in mesh_files
+    assert "assets/franka_emika_panda/link7_7.obj" in mesh_files
+    assert not any(name.endswith("_sc") for name in body_names)
