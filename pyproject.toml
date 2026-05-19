@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "orca_arm"
 version = "0.1.0"
-description = "Orca robot descriptions with bundled URDF/MJCF assets, including single arm and bimanual setups.
+description = "Orca robot descriptions with bundled URDF/MJCF assets, including single arm and bimanual setups."
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [{ name = "Francesco Capuano" , email = "capuano@robots.ox.ac.uk"}]
